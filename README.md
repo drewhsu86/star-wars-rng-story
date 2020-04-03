@@ -32,10 +32,12 @@ using wireframe.cc
 
 ### Priority Matrix:
 image goes here
+
 ![alt text](https://media.giphy.com/media/zCv1NuGumldXa/source.gif "Logo Title Text 1")
 
 ### Timeframes:
 placeholder table:
+
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
