@@ -772,3 +772,7 @@ example response:
 response examination:
 1. The list of results seem to be held in response.items which is an array.
 2. At the item[n] level (n being the index of an item), there is a key called 'link' which links to the image in this case. There is also a thumbnail in item[n].image.thumbnailLink 
+
+![anakin from item.link] (https://vignette.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png/revision/latest?cb=20130621175844)
+
+![anakin from item.image.thumbnailLink](https://vignette.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png/revision/latest?cb=20130621175844)
