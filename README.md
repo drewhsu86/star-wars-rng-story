@@ -79,6 +79,7 @@ I decided to go very minimalistic for this design so that it's just clicking big
 
 ### Priority Matrix:
 
+[Link to priority matrix](https://wireframe.cc/3Ovi0s)
 
 ![Priority Matrix](priority-matrix.png "Priority Matrix")
 
