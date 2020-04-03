@@ -1,20 +1,20 @@
 # API endpoint testing
-### Summary
-1. SWAPI
 
-... BaseURL: https://swapi.co/  
-... No API Key Required  
-... API Call:  BaseURL/category/entry  
-... category = 'people', 'planet', 'starship', 'films', 'vehicles', 'species'
-... entry = positive number less than or equal to the max count in database
+### 1. SWAPI
 
-... example of searching a particular entry:  
+ *BaseURL: https://swapi.co/  
+ *No API Key Required  
+ *API Call:  BaseURL/category/entry  
+ category = 'people', 'planet', 'starship', 'films', 'vehicles', 'species'
+ *entry = positive number less than or equal to the max count in database
+
+ example of searching a particular entry:  
 ``` 
   https://swapi.co/api/planets/5/
 ```
-... where category = 'planet' and number = '5'  
+ where category = 'planet' and number = '5'  
 
-... example response:
+ example response:
 ```
   {
     "name": "Dagobah",
@@ -38,14 +38,14 @@
   }
 ```
 
-... example of searching a particular category:  
+ example of searching a particular category:  
 ``` 
   https://swapi.co/api/species/
 ```
 
-... As one can see in the category search, it returns the array "results" in the data which has all the species as their own objects.
+ As one can see in the category search, it returns the array "results" in the data which has all the species as their own objects.
 
-... example response: 
+ example response:  
 ```
 {
     "count": 37,
@@ -275,27 +275,27 @@
 }
 ```
 
-... should be noted that there are more results, on an endpoint with '?=page=2' under the key "next". This probably goes on until all 37 species is listed (so one object doesn't become too long)
+ should be noted that there are more results, on an endpoint with '?=page=2' under the key "next". This probably goes on until all 37 species is listed (so one object doesn't become too long)
 
 ---
 
-2. GIPHY
-... I signed up for a free API key after signing up for an account.  
+### 2. GIPHY
+I signed up for a free API key after signing up for an account.  
 
-... [https://developers.giphy.com/explorer](https://developers.giphy.com/explorer) let's users try out API calls (with their key)
+[https://developers.giphy.com/explorer](https://developers.giphy.com/explorer) let's users try out API calls (with their key)
 
-... Base URL: https://api.giphy.com/v1/gifs/search?  
-... API key: I hide for now, call it 'myKey'  
-... query: '&q=' + [some search term]  
-... other parameters: &limit=25&offset=0&rating=G&lang=en  
-... these parameters pertains to search results and etc. that I won't mess with
+ *Base URL: https://api.giphy.com/v1/gifs/search?  
+ *API key: I hide for now, call it 'myKey'  
+ *query: '&q=' + [some search term]  
+ *other parameters: &limit=25&offset=0&rating=G&lang=en  
+ these parameters pertains to search results and etc. that I won't mess with
 
-... example (query 'anakin')
+ example (query 'anakin'):  
 ```
-https://api.giphy.com/v1/gifs/search?api_key=un0aXOmo2kxpmU3ZwQeEpjFtPbxvr1DO&q=anakin&limit=25&offset=0&rating=G&lang=en
+https://api.giphy.com/v1/gifs/search?api_key=myKey&q=anakin&limit=25&offset=0&rating=G&lang=en
 ```
 
-.. example response (curtailed):
+ example response (curtailed):  
 ```
 {
     "data": [
@@ -486,14 +486,289 @@ https://api.giphy.com/v1/gifs/search?api_key=un0aXOmo2kxpmU3ZwQeEpjFtPbxvr1DO&q=
                     "url": "https://giphy-analytics.giphy.com/simple_analytics?response_id=dfc5e7e1884088581749cc160e7b77b79832f76d&event_type=GIF_SEARCH&gif_id=Mo9nI2yBKp3RC&action_type=SENT"
                 }
             }
-        }, ...
+        }, 
 ```
-... example response examination
-...1. the response key, "data", is an array of many objects. Most of the ones on top have a "type: gif" key:value pair. And they have an "images" object, which is holding many objects with key names pertaining to the type of image. For example, "downsized_large"
+ example response examination
+1. the response key, "data", is an array of many objects. Most of the ones on top have a "type: gif" key:value pair. And they have an "images" object, which is holding many objects with key names pertaining to the type of image. For example, "downsized_large"
 
-...2. There's an image url in 
+2. There's an image url in (for index n of data)
 ```
- response.data[0].images.downsized_large.url
+ response.data[n].images.downsized_large.url
 ```  
-... It looks like this:  
+ It looks like this:  
 ![anakin](https://media0.giphy.com/media/Mo9nI2yBKp3RC/giphy.gif?cid=4097069adfc5e7e1884088581749cc160e7b77b79832f76d&rid=giphy.gif)
+
+___
+
+### 3. Google Custom Site Search
+
+I went to the google custom search site and added a search engine:
+https://cse.google.com/cse/all
+
+ *Base URL: https://www.googleapis.com/customsearch/v1?
+ *API key: I hide for now, call it 'myKey'  
+ *query: '&q=' + [some search term]  
+ *other parameters: 
+ ..1. '&searchType=': I want an image search so I use 'image'  
+ ..2. '&cx=' to custom search only https://starwars.fandom.com/wiki/Main_Page, I use the google custom search ID from my custom search (made in the user site) that only searches this page (called myCX)
+
+example (query 'anakin'):  
+```
+https://www.googleapis.com/customsearch/v1?key=myKey&cx=myCX&q=anakin&searchType=image
+```
+
+example response:  
+```
+{
+  "kind": "customsearch#search",
+  "url": {
+    "type": "application/json",
+    "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+  },
+  "queries": {
+    "request": [
+      {
+        "title": "Google Custom Search - anakin",
+        "totalResults": "385000",
+        "searchTerms": "anakin",
+        "count": 10,
+        "startIndex": 1,
+        "inputEncoding": "utf8",
+        "outputEncoding": "utf8",
+        "safe": "off",
+        "cx": "015933299778943018564:7q15mjcneyd",
+        "searchType": "image"
+      }
+    ],
+    "nextPage": [
+      {
+        "title": "Google Custom Search - anakin",
+        "totalResults": "385000",
+        "searchTerms": "anakin",
+        "count": 10,
+        "startIndex": 11,
+        "inputEncoding": "utf8",
+        "outputEncoding": "utf8",
+        "safe": "off",
+        "cx": "015933299778943018564:7q15mjcneyd",
+        "searchType": "image"
+      }
+    ]
+  },
+  "context": {
+    "title": "Starwars.fandom"
+  },
+  "searchInformation": {
+    "searchTime": 0.432272,
+    "formattedSearchTime": "0.43",
+    "totalResults": "385000",
+    "formattedTotalResults": "385,000"
+  },
+  "items": [
+    {
+      "kind": "customsearch#result",
+      "title": "Anakin Skywalker | Wookieepedia | Fandom",
+      "htmlTitle": "<b>Anakin</b> Skywalker | Wookieepedia | Fandom",
+      "link": "https://vignette.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png/revision/latest?cb=20130621175844",
+      "displayLink": "starwars.fandom.com",
+      "snippet": "Anakin Skywalker | Wookieepedia | Fandom",
+      "htmlSnippet": "<b>Anakin</b> Skywalker | Wookieepedia | Fandom",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://starwars.fandom.com/wiki/Anakin_Skywalker",
+        "height": 1024,
+        "width": 819,
+        "byteSize": 1417852,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvzmN3ghPUVmMVCbUO1oMN8QTzDSh0-gMvoSiQUPpA2uR64dpko_miExM&s",
+        "thumbnailHeight": 150,
+        "thumbnailWidth": 120
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Anakin Skywalker | Wookieepedia | Fandom",
+      "htmlTitle": "<b>Anakin</b> Skywalker | Wookieepedia | Fandom",
+      "link": "https://vignette.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png/revision/latest/top-crop/width/360/height/360?cb=20130621175844",
+      "displayLink": "starwars.fandom.com",
+      "snippet": "Anakin Skywalker | Wookieepedia | Fandom",
+      "htmlSnippet": "<b>Anakin</b> Skywalker | Wookieepedia | Fandom",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://starwars.fandom.com/wiki/Anakin_Skywalker",
+        "height": 360,
+        "width": 360,
+        "byteSize": 235033,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR9CcymkZPx-tjjsfauVlPFjaxscGIuqBilK-znzwosqPk59Bf9dpDuQ&s",
+        "thumbnailHeight": 121,
+        "thumbnailWidth": 121
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Anakin Skywalker | Wookieepedia | Fandom",
+      "htmlTitle": "<b>Anakin</b> Skywalker | Wookieepedia | Fandom",
+      "link": "https://vignette.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png/revision/latest/top-crop/width/360/height/450?cb=20130621175844",
+      "displayLink": "starwars.fandom.com",
+      "snippet": "Anakin Skywalker | Wookieepedia | Fandom",
+      "htmlSnippet": "<b>Anakin</b> Skywalker | Wookieepedia | Fandom",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://starwars.fandom.com/wiki/Anakin_Skywalker/Legends",
+        "height": 450,
+        "width": 360,
+        "byteSize": 290819,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfzWfP90l7kiwA49VZahAHZeZRotXJkPGbbdoTwntAux7PZrrqECmX7Ds&s",
+        "thumbnailHeight": 127,
+        "thumbnailWidth": 102
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Anakin Solo | Wookieepedia | Fandom",
+      "htmlTitle": "<b>Anakin</b> Solo | Wookieepedia | Fandom",
+      "link": "https://vignette.wikia.nocookie.net/starwars/images/3/3f/AnakinSolo_EA.jpg/revision/latest/top-crop/width/360/height/450?cb=20090820054939",
+      "displayLink": "starwars.fandom.com",
+      "snippet": "Anakin Solo | Wookieepedia | Fandom",
+      "htmlSnippet": "<b>Anakin</b> Solo | Wookieepedia | Fandom",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://starwars.fandom.com/wiki/Anakin_Solo",
+        "height": 450,
+        "width": 360,
+        "byteSize": 41761,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ74yyZwzN54fFU0jpQpo_voLbvgLnjmDwHTkXNA8frLS4VNfsgQAn8w&s",
+        "thumbnailHeight": 127,
+        "thumbnailWidth": 102
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Anakin Solo | Wookieepedia | Fandom",
+      "htmlTitle": "<b>Anakin</b> Solo | Wookieepedia | Fandom",
+      "link": "https://vignette.wikia.nocookie.net/starwars/images/3/3f/AnakinSolo_EA.jpg/revision/latest?cb=20090820054939",
+      "displayLink": "starwars.fandom.com",
+      "snippet": "Anakin Solo | Wookieepedia | Fandom",
+      "htmlSnippet": "<b>Anakin</b> Solo | Wookieepedia | Fandom",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://starwars.fandom.com/wiki/Anakin_Solo",
+        "height": 900,
+        "width": 664,
+        "byteSize": 834043,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3EZe9HcMvWYsHH0WQAJHtFcYCGywY9Kngoe4_Qi3qHqyYI0fXfq3Y76qu&s",
+        "thumbnailHeight": 146,
+        "thumbnailWidth": 108
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Send me the best fan art of Anakin skywalker dark side version ...",
+      "htmlTitle": "Send me the best fan art of <b>Anakin</b> skywalker dark side version ...",
+      "link": "https://static.wikia.nocookie.net/66044a4e-d246-4b7f-bcce-8fb49ebaa3e0",
+      "displayLink": "starwars.fandom.com",
+      "snippet": "Send me the best fan art of Anakin skywalker dark side version ...",
+      "htmlSnippet": "Send me the best fan art of <b>Anakin</b> skywalker dark side version ...",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://starwars.fandom.com/f/p/3343172654596395570",
+        "height": 1250,
+        "width": 750,
+        "byteSize": 63028,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKaxPINKbxHQXEuXuuhjVnAXovGTG1DqqIEXLplM7BXBEtkzRmf6HcB-m9&s",
+        "thumbnailHeight": 150,
+        "thumbnailWidth": 90
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Mission to rescue Shmi Skywalker Lars | Wookieepedia | Fandom",
+      "htmlTitle": "Mission to rescue Shmi Skywalker Lars | Wookieepedia | Fandom",
+      "link": "https://vignette.wikia.nocookie.net/starwars/images/0/08/Anakin_Skywalker_slaughters_Tusken_Raiders.png/revision/latest?cb=20150214020053",
+      "displayLink": "starwars.fandom.com",
+      "snippet": "Mission to rescue Shmi Skywalker Lars | Wookieepedia | Fandom",
+      "htmlSnippet": "Mission to rescue Shmi Skywalker Lars | Wookieepedia | Fandom",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://starwars.fandom.com/wiki/Mission_to_rescue_Shmi_Skywalker_Lars",
+        "height": 534,
+        "width": 1264,
+        "byteSize": 740709,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYHyRMWQAZRxDEyvtLB8NwLo5mMExEboYrVcmKaLFHzkPBEVOJ9rPJ0oUY&s",
+        "thumbnailHeight": 63,
+        "thumbnailWidth": 150
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Force choke | Wookieepedia | Fandom",
+      "htmlTitle": "Force choke | Wookieepedia | Fandom",
+      "link": "https://vignette.wikia.nocookie.net/starwars/images/d/da/Anakinchoke.png/revision/latest?cb=20130205043222",
+      "displayLink": "starwars.fandom.com",
+      "snippet": "Force choke | Wookieepedia | Fandom",
+      "htmlSnippet": "Force choke | Wookieepedia | Fandom",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://starwars.fandom.com/wiki/Force_choke",
+        "height": 816,
+        "width": 1670,
+        "byteSize": 955544,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAeugwzN0cBHPB1Cy8HLua4DVYlnUgOEgoGnWBK49WyprMn_vyjgVd43I&s",
+        "thumbnailHeight": 73,
+        "thumbnailWidth": 150
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Anakin Skywalker | Star Wars Wiki | Fandom",
+      "htmlTitle": "<b>Anakin</b> Skywalker | Star Wars Wiki | Fandom",
+      "link": "https://vignette.wikia.nocookie.net/starwars/images/6/6a/Anakin_Skywalker.jpg/revision/latest/scale-to-width-down/340?cb=20070218103451&path-prefix=nl",
+      "displayLink": "starwars.fandom.com",
+      "snippet": "Anakin Skywalker | Star Wars Wiki | Fandom",
+      "htmlSnippet": "<b>Anakin</b> Skywalker | Star Wars Wiki | Fandom",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://starwars.fandom.com/nl/wiki/Anakin_Skywalker",
+        "height": 474,
+        "width": 340,
+        "byteSize": 23217,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4dvzxq8fmW1Hiv5GLvt8WjP2EijPlR7GzzpBWxwZnSm7imn9YpoqkfKZu&s",
+        "thumbnailHeight": 129,
+        "thumbnailWidth": 93
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "Anakin Skywalker's quarters | Wookieepedia | Fandom",
+      "htmlTitle": "<b>Anakin</b> Skywalker&#39;s quarters | Wookieepedia | Fandom",
+      "link": "https://vignette.wikia.nocookie.net/starwars/images/d/d6/Anakin_Quarters-TCW.jpg/revision/latest?cb=20140307102456",
+      "displayLink": "starwars.fandom.com",
+      "snippet": "Anakin Skywalker's quarters | Wookieepedia | Fandom",
+      "htmlSnippet": "<b>Anakin</b> Skywalker&#39;s quarters | Wookieepedia | Fandom",
+      "mime": "image/",
+      "fileFormat": "image/",
+      "image": {
+        "contextLink": "https://starwars.fandom.com/wiki/Anakin_Skywalker%27s_quarters",
+        "height": 540,
+        "width": 1278,
+        "byteSize": 121871,
+        "thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrwi2bAX2K6qFqyj1B8HrQiSXmRyQoXybM1CQbfGGewV0dhIr8vLiqE3zu&s",
+        "thumbnailHeight": 63,
+        "thumbnailWidth": 150
+      }
+    }
+  ]
+}
+```
+
+response examination:
+1. The list of results seem to be held in response.items which is an array.
+2. At the item[n] level (n being the index of an item), there is a key called 'link' which links to the image in this case. There is also a thumbnail in item[n].image.thumbnailLink 
