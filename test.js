@@ -14,9 +14,23 @@ testURL = `https://swapi.co/api/starships/3`
 
 // testURL = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBX078uQwSqNAc0bdQZVK5v0qVJCFYace8&cx=015933299778943018564:v3lg89gqpit&q=anakin&searchType=image`
 
+// recipe puppy
+
+testURL = 'http://www.recipepuppy.com/api/?i=onions,tomato&q=omelet&p=3'
+
+// testURL = "./test.json"
+
 async function axiosCallTest(URL) {
-  const response = await axios.get(URL)
-  console.log(response)
+
+  try {
+    const response = await axios.get(URL)
+
+
+    console.log(response)
+  }
+  catch (er) {
+    console.log(er)
+  }
 }
 
 axiosCallTest(testURL)
