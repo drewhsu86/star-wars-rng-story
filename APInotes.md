@@ -488,7 +488,7 @@ https://api.giphy.com/v1/gifs/search?api_key=myKey&q=anakin&limit=25&offset=0&ra
             }
         }, 
 ```
- example response examination
+ example response examination:
 1. the response key, "data", is an array of many objects. Most of the ones on top have a "type: gif" key:value pair. And they have an "images" object, which is holding many objects with key names pertaining to the type of image. For example, "downsized_large"
 
 2. There's an image url in (for index n of data)
@@ -769,7 +769,7 @@ example response:
 }
 ```
 
-response examination:
+example response examination:
 1. The list of results seem to be held in response.items which is an array.
 2. At the item[n] level (n being the index of an item), there is a key called 'link' which links to the image in this case. There is also a thumbnail in item[n].image.thumbnailLink 
 
