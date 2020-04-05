@@ -33,15 +33,15 @@ Google Custom Search Engine
 
 Screenshots:
 
-1. SWAPI (in postman):
+#### 1. SWAPI (in postman):
 
 ![SWAPI IN POSTMAN](./images/postman-swapi.png)
 
-2. GIPHY (in postman):
+#### 2. GIPHY (in postman):
 
 ![GIPHY IN POSTMAN](./images/postman-giphy.png)
 
-3. Google CSE (in postman, but returns error):
+#### 3. Google CSE (in postman, but returns error):
 
 ![GoogleCSE IN POSTMAN](./images/postman-googleCSE.png)
 
@@ -51,7 +51,7 @@ Screenshots:
 ![GoogleCSE IN Chrome Inspector](./images/inspector-googleCSE.png)
 
 ### Wireframes:
-Made using wireframe.cc
+#### Made using wireframe.cc
 
 I decided to go very minimalistic for this design so that it's just clicking big answers for a quiz (kind of like Kahoot).
 
@@ -63,6 +63,16 @@ I decided to go very minimalistic for this design so that it's just clicking big
 
 [Browser:](https://wireframe.cc/LjJBkN)
 ![Browser Wireframe](./images/wireframe-browser.png)
+
+#### HTML and CSS Mockup
+ 
+I made a mockup of a button with an image saved to the directory (so no API call for the image).
+
+The div uses a border-radius of 50% and a predeterined height and width. The img uses 100% as the width (and for now does not constrain the height). Overflow: hidden cuts off parts of the image not inside the circle.
+
+The basic idea is to make a click event listener and hover effect to make this div an interactive button.
+
+![Anakin circular button example](./images.button-mockup.png)
 
 ### MVP: 
 1. User interface: presents questions to the users with the goal of collecting some answers (with visual buttons, maybe divs as buttons). The buttons will be aligned using css flex

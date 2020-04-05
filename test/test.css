@@ -1,0 +1,16 @@
+.roundButton {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 50%;
+  border: 30px solid green;
+  overflow: hidden;
+  width: 400px;
+  height: 400px;
+  margin: 100px;
+}
+
+img {
+  width: 100%;
+  /* only need width if picture is top aligned */
+}
