@@ -56,11 +56,13 @@ Made using wireframe.cc
 I decided to go very minimalistic for this design so that it's just clicking big answers for a quiz (kind of like Kahoot).
 
 
-![Mobile Wireframe](./wireframe-mobile.png)
-[Mobile:](https://wireframe.cc/g0XuUp)
 
-![Browser Wireframe](./wireframe-browser.png)
+[Mobile:](https://wireframe.cc/g0XuUp)
+![Mobile Wireframe](./wireframe-mobile.png)
+
+
 [Browser:](https://wireframe.cc/LjJBkN)
+![Browser Wireframe](./wireframe-browser.png)
 
 ### MVP: 
 1. User interface: presents questions to the users with the goal of collecting some answers (with visual buttons, maybe divs as buttons). The buttons will be aligned using css flex
