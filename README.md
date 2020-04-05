@@ -125,6 +125,8 @@ The basic idea is to make a click event listener and hover effect to make this d
 
 ![Priority Matrix](./images/priority-matrix.png "Priority Matrix")
 
+---
+
 ### Timeframes:
 Expected vs actual hours spent per task
 
