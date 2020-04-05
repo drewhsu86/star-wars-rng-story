@@ -68,7 +68,7 @@ I decided to go very minimalistic for this design so that it's just clicking big
 
 #### HTML and CSS Mockup
  
-I made a mockup of a button with an image saved to the directory (so no API call for the image).
+I made a mockup of the type of div-based button I want to use, with an image saved to the directory (so no API call for the image).
 
 The div uses a border-radius of 50% and a predeterined height and width. The img uses 100% as the width (and for now does not constrain the height). Overflow: hidden cuts off parts of the image not inside the circle.
 
