@@ -282,7 +282,7 @@
 ### 2. GIPHY
 I signed up for a free API key after signing up for an account.  
 
-[https://developers.giphy.com/explorer](https://developers.giphy.com/explorer) let's users try out API calls (with their key)
+[https://developers.giphy.com/explorer](https://developers.giphy.com/explorer) lets users try out API calls (with their key)
 
  *Base URL: https://api.giphy.com/v1/gifs/search?  
  *API key: I hide for now, call it 'myKey'  

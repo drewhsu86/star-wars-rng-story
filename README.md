@@ -1,13 +1,13 @@
 
-# Project: Star Wars Story Quiz
+# Project: Star Wars RNG Story
 
 ### App Title:
-Star Wars - Story Quiz!
+Star Wars - RNG Story!
 
 ### App Description:
 Tired of latest Star Wars canon? We've got the app for you! 
 
-Just answer some easy multiple choice questions and our custom AI will write a pertinent and heartfelt story based on your choices!
+Just answer some easy multiple choice questions and our custom AI will write a thrilling and heartfelt story based on your choices!
 
 After your choices are entered, just hit finish and voila! Your new Star Wars story is ready to be viewed on your browser or mobile device.
 
@@ -24,20 +24,42 @@ GIPHY
 
 Google Custom Search Engine
 ..* If GIPHY fails us, we will have to resort to finding another image. Or if we need a normal or serious image we can use the Google custom search. 
-..* (Using two of them: one searches Star Wars Fandom Wiki and the other searches GIPHY if we hit our GIPHY limit)
+..* We also set up a Google CSE for the Star Wars Fandom website. This will find non-meme based, regular images for some of the quiz questions so that serious story decisions can be made.
 
 ---
 
 ### API Snippet:
 [Link to my API Snippets](https://git.generalassemb.ly/drewhsu86/GA-SEI-Apollo-Project1/blob/master/APInotes.md)
 
+Screenshots:
+
+1. SWAPI (in postman):
+
+![SWAPI IN POSTMAN](./postman-swapi.png)
+
+2. GIPHY (in postman):
+
+![GIPHY IN POSTMAN](./postman-giphy.png)
+
+3. Google CSE (in postman, but returns error):
+
+![GoogleCSE IN POSTMAN](./postman-googleCSE.png)
+
+* but the Google CSE endpoint works with Axios and in chrome
+
+![GoogleCSE IN Axios](./vsCode-googleCSE.png)
+![GoogleCSE IN Chrome Inspector](./inspector-googleCSE.png)
+
 ### Wireframes:
 Made using wireframe.cc
 
 I decided to go very minimalistic for this design so that it's just clicking big answers for a quiz (kind of like Kahoot).
 
+
+![Mobile Wireframe](./wireframe-mobile.png)
 [Mobile:](https://wireframe.cc/g0XuUp)
 
+![Browser Wireframe](./wireframe-browser.png)
 [Browser:](https://wireframe.cc/LjJBkN)
 
 ### MVP: 

@@ -12,11 +12,11 @@ testURL = `https://swapi.co/api/starships/3`
 
 // google custom search
 
-// testURL = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBX078uQwSqNAc0bdQZVK5v0qVJCFYace8&cx=015933299778943018564:v3lg89gqpit&q=anakin&searchType=image`
+testURL = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBX078uQwSqNAc0bdQZVK5v0qVJCFYace8&cx=015933299778943018564:v3lg89gqpit&q=anakin&searchType=image`
 
 // recipe puppy
 
-testURL = 'http://www.recipepuppy.com/api/?i=onions,tomato&q=omelet&p=3'
+// testURL = 'http://www.recipepuppy.com/api/?i=onions,tomato&q=omelet&p=3'
 
 // testURL = "./test.json"
 
