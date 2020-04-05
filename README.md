@@ -108,7 +108,7 @@ I decided to go very minimalistic for this design so that it's just clicking big
 ![Priority Matrix](priority-matrix.png "Priority Matrix")
 
 ### Timeframes:
-placeholder table:
+Expected vs actual hours spent per task
 
 | Goal      | Exp. Hrs          | Actual Hrs  |
 | ------------- |:-------------:| -----|
