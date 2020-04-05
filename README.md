@@ -17,14 +17,14 @@ After your choices are entered, just hit finish and voila! Your new Star Wars st
 ### API:
 
 SWAPI
-..* In order to fill out our choices in the quizzes and to fill in background characters in the story, we will choose random numbers and call the API to see who we get.
+* In order to fill out our choices in the quizzes and to fill in background characters in the story, we will choose random numbers and call the API to see who we get.
 
 GIPHY
-..* For the face-off against the antagonist we need the most meme-y image of them as possible.
+* For the face-off against the antagonist we need the most meme-y image of them as possible.
 
 Google Custom Search Engine
-..* If GIPHY fails us, we will have to resort to finding another image. Or if we need a normal or serious image we can use the Google custom search. 
-..* We also set up a Google CSE for the Star Wars Fandom website. This will find non-meme based, regular images for some of the quiz questions so that serious story decisions can be made.
+* If GIPHY fails us, we will have to resort to finding another image. Or if we need a normal or serious image we can use the Google custom search. 
+* We also set up a Google CSE for the Star Wars Fandom website. This will find non-meme based, regular images for some of the quiz questions so that serious story decisions can be made.
 
 ---
 
@@ -35,20 +35,20 @@ Screenshots:
 
 1. SWAPI (in postman):
 
-![SWAPI IN POSTMAN](./postman-swapi.png)
+![SWAPI IN POSTMAN](./images/postman-swapi.png)
 
 2. GIPHY (in postman):
 
-![GIPHY IN POSTMAN](./postman-giphy.png)
+![GIPHY IN POSTMAN](./images/postman-giphy.png)
 
 3. Google CSE (in postman, but returns error):
 
-![GoogleCSE IN POSTMAN](./postman-googleCSE.png)
+![GoogleCSE IN POSTMAN](./images/postman-googleCSE.png)
 
 * but the Google CSE endpoint works with Axios and in chrome
 
-![GoogleCSE IN Axios](./vsCode-googleCSE.png)
-![GoogleCSE IN Chrome Inspector](./inspector-googleCSE.png)
+![GoogleCSE IN Axios](./images/vsCode-googleCSE.png)
+![GoogleCSE IN Chrome Inspector](./images/inspector-googleCSE.png)
 
 ### Wireframes:
 Made using wireframe.cc
@@ -58,11 +58,11 @@ I decided to go very minimalistic for this design so that it's just clicking big
 
 
 [Mobile:](https://wireframe.cc/g0XuUp)
-![Mobile Wireframe](./wireframe-mobile.png)
+![Mobile Wireframe](./images/wireframe-mobile.png)
 
 
 [Browser:](https://wireframe.cc/LjJBkN)
-![Browser Wireframe](./wireframe-browser.png)
+![Browser Wireframe](./images/wireframe-browser.png)
 
 ### MVP: 
 1. User interface: presents questions to the users with the goal of collecting some answers (with visual buttons, maybe divs as buttons). The buttons will be aligned using css flex
