@@ -50,6 +50,8 @@ Screenshots:
 ![GoogleCSE IN Axios](./images/vsCode-googleCSE.png)
 ![GoogleCSE IN Chrome Inspector](./images/inspector-googleCSE.png)
 
+---
+
 ### Wireframes:
 #### Made using wireframe.cc
 
@@ -74,6 +76,8 @@ The basic idea is to make a click event listener and hover effect to make this d
 
 ![Anakin circular button example](./images/button-mockup.png)
 
+---
+
 ### MVP: 
 1. User interface: presents questions to the users with the goal of collecting some answers (with visual buttons, maybe divs as buttons). The buttons will be aligned using css flex
 
@@ -81,6 +85,7 @@ The basic idea is to make a click event listener and hover effect to make this d
 
 3. An array will store a bunch of story scenes assembled from our data, both character info and images found on Giphy and Google CSE. This data will be used to create divs and append them to the page. Each div will have a button at the bottom, which hides the current div and opens the next one.
 
+---
 
 ### Post-MVP
 1. Technical improvements: 
@@ -94,6 +99,7 @@ The basic idea is to make a click event listener and hover effect to make this d
 * Find ways to generate more scenarios. Currently I plan to hard code some story elements so that the app works. I might look into if news API or another API can be used to replace proper nouns (words with a capital letter but don't come after a period) with star wars characters. 
 * If I find a usable dictionary app I could have the computer generate better word replacements using star wars characters but this is a lot more work than just the base functionality.
 
+---
 
 ### Goals: 
 
@@ -110,6 +116,8 @@ The basic idea is to make a click event listener and hover effect to make this d
 | April 8 - Wednesday | all basic functionality runs beginning to end | 4 |
 | April 8 - Wednesday | css pass over all relevant elements | 4 |
 | April 9 - Thursday | css and bugs day | 8 |
+
+---
 
 ### Priority Matrix:
 
