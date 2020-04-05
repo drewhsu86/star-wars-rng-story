@@ -105,7 +105,7 @@ I decided to go very minimalistic for this design so that it's just clicking big
 
 [Link to priority matrix](https://wireframe.cc/3Ovi0s)
 
-![Priority Matrix](priority-matrix.png "Priority Matrix")
+![Priority Matrix](./images/priority-matrix.png "Priority Matrix")
 
 ### Timeframes:
 Expected vs actual hours spent per task
