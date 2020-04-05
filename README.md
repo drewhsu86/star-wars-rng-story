@@ -72,7 +72,7 @@ The div uses a border-radius of 50% and a predeterined height and width. The img
 
 The basic idea is to make a click event listener and hover effect to make this div an interactive button.
 
-![Anakin circular button example](./images.button-mockup.png)
+![Anakin circular button example](./images/button-mockup.png)
 
 ### MVP: 
 1. User interface: presents questions to the users with the goal of collecting some answers (with visual buttons, maybe divs as buttons). The buttons will be aligned using css flex
