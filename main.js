@@ -131,10 +131,25 @@ window.onload = () => {
     // 2 nemeses
 
     // queryAPIs(4, maxSpecies, 'species', 'What species are you?')
-    generateQDivByCat(4, 'species', maxSpecies, 'What species are you?', 'species')
-    generateQDivByCat(3, 'people', maxStarships, 'Who is your sidekick?', 'sidekick')
-    generateQDivByCat(3, 'starships', maxStarships, 'Which starship do you pilot?', 'starship')
-    generateQDivByCat(2, 'people', maxStarships, 'Who is ultimate nemesis?', 'nemesis')
+    generateQDivByCat(randToArr(4, maxSpecies), 'species', maxSpecies, 'What species are you?', 'species')
+
+    const sidIndices = randToArr(3, maxSpecies)
+
+    generateQDivByCat(sidIndices, 'people', maxPeople, 'Who is your sidekick?', 'sidekick')
+
+    generateQDivByCat(randToArr(3, maxStarships), 'starships', maxStarships, 'Which starship do you pilot?', 'starship')
+
+    // need to go back and check against sidekicks to prevent 
+    // repeat characters from showing up
+    let nemIndices = []
+    for (let i = 0; i < 2; i++) {
+      let currNum = Math.floor(Math.random() * maxPeople) + 1
+      while (nemIndices.includes(currNum) || sidIndices.includes(currNum)) {
+        currNum = Math.floor(Math.random() * maxPeople) + 1
+      }
+      nemIndices.push(currNum)
+    }
+    generateQDivByCat(nemIndices, 'people', maxPeople, 'Who is ultimate nemesis?', 'nemesis')
 
 
     // because of async nature, when the second question is answered the other divs should be constructed 
@@ -250,7 +265,7 @@ window.onload = () => {
 
 
   // function generateQuestionDiv()
-  function generateQDivByCat(num, qType, qMax, qStr, qRecord) {
+  function generateQDivByCat(nums, qType, qMax, qStr, qRecord) {
     // this function calls swapi and accesses a category
     // because many categories are issing individual id's
     // this looks at what's available
@@ -275,7 +290,7 @@ window.onload = () => {
 
     // then we call that page using this url structure:
     // https://swapi.co/api/starships/?page=1
-    const randNums = randToArr(num, qMax)
+    const randNums = nums
 
     for (randNum of randNums) {
       // first, each page holds ten things so we pick a page

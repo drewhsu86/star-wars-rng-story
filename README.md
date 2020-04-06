@@ -105,8 +105,6 @@ The basic idea is to make a click event listener and hover effect to make this d
 
 | Day       | Goal           | Exp. Hrs  |
 | ------------- |:-------------:| -----|
-| April 4 - Saturday  | all APIs return valid calls and data | 4 |
-| April 4 - Saturday  | wireframes and plan for html     |   3   |
 | April 5 - Sunday  | finish project plan | 8 |
 | April 6 - Monday     | get project approval     |   1 |
 | April 6 - Monday  | HTML skeleton & css (flexbox only)   |    3 |
@@ -132,8 +130,6 @@ Expected vs actual hours spent per task
 
 | Goal      | Exp. Hrs          | Actual Hrs  |
 | ------------- |:-------------:| -----|
-| all APIs return valid calls and data | 4 |  4 |
-| wireframes and plan for html     |   3   | ? |
 | finish project plan | 8 | ? |
 | get project approval     |   1 | ? |
 | HTML skeleton & css (flexbox only)   |    3 | ? |
@@ -143,3 +139,4 @@ Expected vs actual hours spent per task
 | all basic functionality runs beginning to end | 4 | ? |
 | css pass over all relevant elements | 4 | ? |
 | css and bugs | 8 | ? |
+| Total Hours | 41  | ?  |
