@@ -131,10 +131,10 @@ window.onload = () => {
     // 2 nemeses
 
     // queryAPIs(4, maxSpecies, 'species', 'What species are you?')
-    generateQDivByCat(4, 'species', maxSpecies, 'What species are you?')
-    generateQDivByCat(3, 'people', maxStarships, 'Who is your sidekick?')
-    generateQDivByCat(3, 'starships', maxStarships, 'Which starship do you pilot?')
-    generateQDivByCat(2, 'people', maxStarships, 'Who is ultimate nemesis?')
+    generateQDivByCat(4, 'species', maxSpecies, 'What species are you?', 'species')
+    generateQDivByCat(3, 'people', maxStarships, 'Who is your sidekick?', 'sidekick')
+    generateQDivByCat(3, 'starships', maxStarships, 'Which starship do you pilot?', 'starship')
+    generateQDivByCat(2, 'people', maxStarships, 'Who is ultimate nemesis?', 'nemesis')
 
 
     // because of async nature, when the second question is answered the other divs should be constructed 
@@ -204,6 +204,8 @@ window.onload = () => {
     answers.className = 'answers'
     qContainer.append(answers)
 
+    let colorInd = 0
+
     // for each answer choice make a new answer button
     // aArr should be an array holding objects of the form:
     // {text: textStr, img: srcStr}
@@ -217,7 +219,8 @@ window.onload = () => {
 
       const imgHolder = document.createElement('div')
       imgHolder.className = 'imgHolder'
-      imgHolder.style.borderColor = colorWheel[ind]
+      imgHolder.style.borderColor = colorWheel[colorInd]
+      colorInd++
 
       const answerImg = document.createElement('img')
       answerImg.className = 'answerImg'
@@ -247,7 +250,7 @@ window.onload = () => {
 
 
   // function generateQuestionDiv()
-  function generateQDivByCat(num, qType, qMax, qStr) {
+  function generateQDivByCat(num, qType, qMax, qStr, qRecord) {
     // this function calls swapi and accesses a category
     // because many categories are issing individual id's
     // this looks at what's available
@@ -315,7 +318,7 @@ window.onload = () => {
 
                 const imgHolder = document.createElement('div')
                 imgHolder.className = 'imgHolder'
-                imgHolder.style.borderColor = colorWheel[ind]
+                imgHolder.style.borderColor = colorWheel[colorInd]
                 colorInd++
 
                 const answerImg = document.createElement('img')
@@ -327,7 +330,7 @@ window.onload = () => {
                 imgHolder.addEventListener('click', () => {
                   // add functionality to the image so that
                   // it acts as a button 
-                  quizSelections[qType] = {
+                  quizSelections[qRecord] = {
                     text: ans.text.toUpperCase(),
                     img: ans.img
                   }
