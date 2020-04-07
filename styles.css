@@ -146,25 +146,66 @@ button:hover {
 
 .sImgCont {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 
 .sImgDiv {
-  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   overflow: hidden;
-  width: 250px;
-  height: 250px;
-  margin: 30px;
+  min-width: 300px;
+  
+  border: 5px solid #220022;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 .sImg {
   width: 100%;
-  min-height: 100%;
+  min-height: 300px;
+  max-width: 60vw;
 }
 
 .sCircle {
   border: 3px dotted yellow;
   border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  
+}
+
+@keyframes blurring {
+  from {
+    filter: blur(60%);
+  } to {
+    filter: blur(10%);
+  }
+}
+
+.sHolo {
+  filter: sepia(100%) hue-rotate(45deg);
+  animation-name: blurring;
+  animation-duration: 2s;
+}
+
+@media (min-width: 600px) {
+
+  .sImgCont {
+
+    flex-direction: row;
+
+  }
+
+  .answers {
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: space-around;
+    
+  }
+
 }

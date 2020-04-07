@@ -178,7 +178,10 @@ window.onload = () => {
     // try to make a hidden div that comes after questions
     // storyCreator(quizSelections)
 
-    generateQuestionDiv('Press "Start" to start!', [{ text: '', img: './images/start.png' }], 'div', storyCreator)
+    generateQuestionDiv(`
+    Thanks for answering! \n
+    We've processed your answers! \n
+    Press "Start" to start!`, [{ text: '', img: './images/start.png' }], 'div', storyCreator)
 
 
 
@@ -509,21 +512,29 @@ window.onload = () => {
     // create an array of strings that define what we want to show
     const storyStrs = createStrs(s)
 
-    const endBtn = {
-      text: 'Start Over!',
-      eventFunc() {
-        location.reload()
-      }
-    }
+    // const endBtn = {
+    //   text: 'Start Over!',
+    //   eventFunc() {
+    //     location.reload()
+    //   }
+    // }
 
     createStoryPage(storyStrs[0], [s.starship.img], '')
     createStoryPage(storyStrs[1], [s.sidekick.img, s.species.img], 'sCircle')
     createStoryPage(storyStrs[2], ['./images/space-battle.gif'], '')
-    createStoryPage(storyStrs[3], ['./stormtroops.gif'], '')
-    createStoryPage(storyStrs[4], [s.nemesis.img], '')
-    createStoryPage(storyStrs[5], [s.species.img, s.weapon.img, s.nemesis.img], '')
+    createStoryPage(storyStrs[3], ['./images/stormtroopers.gif'], '')
+    createStoryPage(storyStrs[4], [s.nemesis.img], 'sCircle')
+    createStoryPage(storyStrs[5], [s.species.img, s.weapon.img, s.nemesis.img], 'sCircle')
+    createStoryPage(storyStrs[6], ['./images/palpatine-hate.gif'], 'sHolo')
+    generateQuestionDiv(`Who is this mysterious overlord? \n
+    To be continued? \n
+    To play again, hit "Restart"!
+    `, [{ text: '', img: './images/restart.png' }], 'div', restart)
   } // end of storyCreator (aggregates helper functions)
 
+  function restart() {
+    location.reload()
+  }
 
   function createStrs(s) {
 
@@ -531,7 +542,7 @@ window.onload = () => {
 
     // page 1
     result.push(`
-    Our hero, ${s.name}, exits hyperspace in his recently repaired ${s.starship.text}. He looks at his nav computer for the beacon, indicating the rendevous point with the rebel alliance fleet. ${s.name} is at the planet CORELLIA, which is currently under siege. \n
+    Our hero, ${s.name}, exits hyperspace in his recently repaired ${s.starship.text}. He looks at his nav computer for the rendevous point with the rebel alliance fleet. ${s.name} is at the planet CORELLIA, which is currently under siege. \n
 
     The imperial blockade over CORELLIA has lasted over a month. A ring of STAR DESTROYERS ominously orbits around the planet, while more and more rebel ships assemble at the edge of the system. 
     `)
@@ -556,7 +567,7 @@ window.onload = () => {
 
     // page 4 
     result.push(`
-      After crashing into the docking bay, ${s.name} and ${s.sidekick.text} pull out their ${s.weapon.text}s and run towards the bay doors. \n 
+      After crashing into the docking bay, ${s.name} and ${s.sidekick.text} pull out their ${s.weapon.text}S and run towards the bay doors. \n 
 
       Suddenly, the doors slide open and dozens of stormtroopers brandish their rifles. \n 
 
@@ -576,13 +587,28 @@ window.onload = () => {
 
     // page 6
     result.push(`
-      ${s.name} and ${s.nemesis.text} tighten their grips on their ${s.weapon.text}s. \n 
+      ${s.name} and ${s.nemesis.text} tighten their grips on their ${s.weapon.text}S. \n 
       ${s.nemesis.text} smiles menacingly. "Fitting to settle this with a duel, isn't it?"
 
       "You're here to chat or fight?" replies ${s.name}. \n 
 
       Sparks fly around the room as both combatants brandish their weapons. 
     `)
+
+    // page 7 
+    result.push(`
+      ${s.nemesis.text} falls to the ground with a smoking wound in their torso. \n 
+      ${s.name} walks closer with his ${s.weapon.text} raised. "Any last words?" \n 
+      ${s.nemesis.text} gives ${s.name} a condescending look. "You will never understand the power of the dark side of the force." But ${s.nemesis.text} barely has any breath left, struggling to speak these words. \n 
+
+      ${s.name} turns to ${s.sidekick.text}. "Call it in to ADMIRAL ACKBAR. We've finally defeated ${s.nemesis.text}. Have them send some ships to capture this flagship." \n 
+
+      Suddenly the holographic projector on the wall activates. \n 
+      "You think it is so easy to defeat the dark side? We shall see, my friend. Huehuehue..." 
+
+    `)
+
+
 
 
     return result
@@ -605,7 +631,7 @@ window.onload = () => {
       sImg.setAttribute('src', sImgPath)
       sImg.setAttribute('alt', sImgPath)
       if (sImgClass) {
-        sImg.className += ' ' + sImgClass
+        sImgDiv.className += ' ' + sImgClass
       }
     }
 
@@ -618,6 +644,7 @@ window.onload = () => {
     sButton.innerText = btn ? btn.text : 'Next!'
     sButton.addEventListener('click', () => {
       if (!btn) {
+        header.scrollIntoView()
         nextSibClass(sButton, 'sContainer', 'flex')
       } else {
         btn.eventFunc()
