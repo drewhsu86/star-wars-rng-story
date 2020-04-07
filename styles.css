@@ -10,12 +10,21 @@ body {
 }
 
 header h1 {
-  font-size: 50px;
+  font-size: 80px;
 }
 
 footer {
   width: 100%;
   margin-top: 100px;
+}
+
+footer a:link, footer a:visited  {
+  text-decoration: none;
+  color: orange;
+}
+
+footer a:hover, footer a:active {
+  color: #770077;
 }
 
 /* main {
