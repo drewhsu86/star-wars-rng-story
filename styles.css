@@ -1,29 +1,55 @@
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  background-color: black;
+  color: yellow;
 }
 
 header {
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
 }
 
 footer {
   width: 100%;
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
 }
 
-main {
+/* main {
   background-color: darkgrey;
-}
+} */
 
 input {
+  font-size: 30px;
+  color: #220022;
   display: inline-block;
+  padding: 10px;
+  margin: 30px;
 }
 
 button {
+  font-size: 30px;
+  font-weight: normal;
+
   display: inline-block;
+  background-color: #330033;
+  border: 3px solid yellow;
+  border-radius: 10px;
+  color: yellow;
+  
+  padding: 10px;
+  margin: 30px; 
 }
 
-.qContainer {
+button:hover {
+  border: 3px dashed yellow;
+  font-weight: bold;
+}
+
+.qContainer, .sContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,4 +100,71 @@ button {
   width: 100%;
   min-height: 100%;
   
+}
+
+.sContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  
+  padding: 10px;
+
+}
+
+.sParagraph {
+  color: yellow;
+  background-color: #110011;
+  font-size: 25px;
+  line-height: 1.5;
+  padding: 30px;
+  margin: 10px;
+  text-align: left;
+  max-width: 85vw;
+}
+
+
+.sButton {
+  background-color: #330033;
+  color: yellow;
+  font-size: 25px;
+  font-weight: normal;
+  border: 5px solid yellow;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px;
+  width: 50%;
+  
+}
+
+.sButton:hover {
+  background-color: #330033;
+  border: 5px dashed yellow;
+  color: yellow;
+  font-weight: bold;
+}
+
+.sImgCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sImgDiv {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 250px;
+  height: 250px;
+  margin: 30px;
+}
+
+.sImg {
+  width: 100%;
+  min-height: 100%;
+}
+
+.sCircle {
+  border: 3px dotted yellow;
+  border-radius: 50%;
 }

@@ -50,6 +50,26 @@ window.onload = () => {
   const main = document.querySelector('main')
   const header = document.querySelector('header')
 
+  let submitButton
+  let apiLoadInfo = {
+    qReady: 0,
+    qNeeded: 4 + 3 + 3 + 2,
+    qCheck: function () {
+
+      if (this.qReady >= this.qNeeded) {
+        console.log('qCheck = true')
+        return true
+      } else {
+        console.log('qCheck = false')
+        return false
+      }
+    },
+    qAddReady: function () {
+      this.qReady++
+      console.log('qAddReady: qReady = ' + this.qReady)
+    }
+  }
+
   // a "wheel" for setting basic colors
   const colorWheel = ['red', 'green', 'blue', 'yellow', 'purple']
 
@@ -82,13 +102,13 @@ window.onload = () => {
   const urlSWAPI = `https://swapi.co/api/`
 
   // giphy base url 
-  const urlGIPHY = `https://api.giphy.com/v1/gifs/search?api_key=un0aXOmo2kxpmU3ZwQeEpjFtPbxvr1DO&limit=25&offset=0&rating=G&lang=en`
+  // const urlGIPHY = null // not used so I removed
 
   // google cse starwars fandom url
   const urlGcseSW = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBX078uQwSqNAc0bdQZVK5v0qVJCFYace8&cx=015933299778943018564:7q15mjcneyd&searchType=image`
 
   // google cse giphy url 
-  const urlGcseGIPHY = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBX078uQwSqNAc0bdQZVK5v0qVJCFYace8&cx=015933299778943018564:v3lg89gqpit&searchType=image`
+  // const urlGcseGIPHY = null // not used so I removed 
 
 
 
@@ -101,9 +121,11 @@ window.onload = () => {
     sidekick: '',
     nemesis: ''
   }
-  let storySelections = {
 
-  }
+  // going to let storySelections be post MVP due to SWAPI problems
+  // let storySelections = {
+
+  // }
 
 
   // onload, run async function initializeQuiz
@@ -117,20 +139,14 @@ window.onload = () => {
   // function initializeQuiz
   function initializeQuiz() {
 
-    let questions = []
-
-
-
     // run helper functions to add divs to array called questions
 
-    questions.push(generateNameDiv())
-    questions.push(generateQuestionDiv(
+    generateNameDiv()
+    generateQuestionDiv(
       'In the Star Wars universe, which weapon would you use?',
-      weapons, 'weapon'))
+      weapons, 'weapon')
 
-    questions.forEach((qstn) => {
-      main.append(qstn)
-    })
+
 
     // perform api call for:
     // 4 species
@@ -156,10 +172,14 @@ window.onload = () => {
       }
       nemIndices.push(currNum)
     }
-    generateQDivByCat(nemIndices, 'people', 'Who is ultimate nemesis?', 'nemesis', ['General Grievous', 'Obi-Wan Kenobi'])
+    generateQDivByCat(nemIndices, 'people', 'Who is your ultimate nemesis?', 'nemesis', ['General Grievous', 'Obi-Wan Kenobi'])
 
 
-    // because of async nature, when the second question is answered the other divs should be constructed 
+    // try to make a hidden div that comes after questions
+    // storyCreator(quizSelections)
+
+    generateQuestionDiv('Press "Start" to start!', [{ text: '', img: './images/start.png' }], 'div', storyCreator)
+
 
 
 
@@ -186,8 +206,15 @@ window.onload = () => {
     answerInput.setAttribute('placeholder', 'Type your name here')
     answers.append(answerInput)
 
-    const submitButton = document.createElement('button')
-    submitButton.innerText = 'Submit!'
+    submitButton = document.createElement('button')
+
+    if (apiLoadInfo.qCheck()) {
+      submitButton.disabled = false
+      submitButton.innerText = 'Submit!'
+    } else {
+      submitButton.disabled = true
+      submitButton.innerText = 'Loading...'
+    }
     answers.append(submitButton)
 
     answers.addEventListener('submit', (evt) => {
@@ -199,13 +226,14 @@ window.onload = () => {
       }
     })
 
+    main.append(qContainer)
     return qContainer
 
   } // end of function generateNameDiv
 
 
   // function generateQuestionDiv()
-  function generateQuestionDiv(qStr, aArr, qType) {
+  function generateQuestionDiv(qStr, aArr, qType, myFunc) {
     // the parameters are question as a string
     // and possible answers as arguments
     if (aArr.length <= 0) {
@@ -247,19 +275,29 @@ window.onload = () => {
       const answerImg = document.createElement('img')
       answerImg.className = 'answerImg'
       answerImg.setAttribute('src', ans.img)
+      answerImg.setAttribute('alt', ans.text)
       imgHolder.append(answerImg)
 
 
       answerImg.addEventListener('click', () => {
         // add functionality to the image so that
         // it acts as a button 
-        quizSelections[qType] = {
-          text: ans.text.toUpperCase(),
-          img: ans.img
+        if (myFunc) {
+          // if you supply a function it will perform it 
+          myFunc()
+        } else {
+          // else it will add the quiz answer to the object
+          quizSelections[qType] = {
+            text: ans.text.toUpperCase(),
+            img: ans.img
+          }
+          console.log(quizSelections)
         }
+
+
         header.scrollIntoView()
-        nextSibClass(answers, 'qContainer')
-        console.log(quizSelections)
+        nextSibClass(answers, 'qContainer', 'flex')
+
       })
 
       answerDiv.append(answerText)
@@ -267,6 +305,7 @@ window.onload = () => {
       answers.append(answerDiv)
     })
 
+    main.append(qContainer)
     return qContainer
   } // end of function generateQuestionDiv
 
@@ -330,7 +369,7 @@ window.onload = () => {
                 queryObj.img = queryImg
 
                 console.log('Accessed Google CSE')
-                console.log(queryObj)
+                // console.log(queryObj)
                 return queryObj
               }).then((ans) => {
                 // for each answer choice make a new answer button
@@ -355,6 +394,7 @@ window.onload = () => {
                 const answerImg = document.createElement('img')
                 answerImg.className = 'answerImg'
                 answerImg.setAttribute('src', ans.img)
+                answerImg.setAttribute('alt', ans.text)
                 imgHolder.append(answerImg)
 
 
@@ -366,7 +406,7 @@ window.onload = () => {
                     img: ans.img
                   }
                   header.scrollIntoView()
-                  nextSibClass(answers, 'qContainer')
+                  nextSibClass(answers, 'qContainer', 'flex')
                   console.log(quizSelections)
                 })
 
@@ -374,7 +414,13 @@ window.onload = () => {
                 answerDiv.append(imgHolder)
                 answers.append(answerDiv)
 
-              }) // end of then/finally
+                // at the end of 4+3+3+2 calls 
+                apiLoadInfo.qAddReady()
+                if (apiLoadInfo.qCheck()) {
+                  submitButton.disabled = false
+                  submitButton.innerText = 'Submit!'
+                }
+              }) // end of then
 
           })
 
@@ -385,6 +431,9 @@ window.onload = () => {
       }
     } // end of for loop over num 
 
+
+
+
     return qContainer
   } // end of function generateQDivByCat
 
@@ -392,7 +441,8 @@ window.onload = () => {
   // function nextSibClass - hide this element's question div and activate next sibling question div
   // we float up the tree of the dom until we run into qContainer 
 
-  function nextSibClass(childElem, whichClass) {
+  function nextSibClass(childElem, whichClass, whichDisp) {
+    // search for the parent with whichClass 
     let currElem = childElem
     // console.log(currElem.className)
     while (currElem && currElem.className !== whichClass) {
@@ -402,10 +452,13 @@ window.onload = () => {
 
     // console.log(currElem)
 
+    // if you don't reach the top (body or above)
+    // change parent to not be displayed and make the next 
+    // sibling to the parent to be displayed
     if (currElem && currElem.className !== 'body') {
       currElem.style.display = "none"
       if (currElem.nextElementSibling) {
-        currElem.nextElementSibling.style.display = "inline-block"
+        currElem.nextElementSibling.style.display = (whichDisp ? whichDisp : 'inline-block')
         return true
       }
       return false
@@ -434,7 +487,146 @@ window.onload = () => {
 
     return prevChoices
 
-  }
+  } // end randToArr function 
+
+  function createElemWParent(attachParent, sClass, elemType) {
+    // attachDiv is the div the story div attaches to 
+    const elem = document.createElement(elemType)
+    elem.className = sClass
+    attachParent.append(elem)
+
+    return elem
+  } // end createElemWParent
+
+
+
+  // object with method to make story divs 
+  function storyCreator() {
+    console.log('starting storyCreator')
+
+    const s = quizSelections
+
+    // create an array of strings that define what we want to show
+    const storyStrs = createStrs(s)
+
+    const endBtn = {
+      text: 'Start Over!',
+      eventFunc() {
+        location.reload()
+      }
+    }
+
+    createStoryPage(storyStrs[0], [s.starship.img], '')
+    createStoryPage(storyStrs[1], [s.sidekick.img, s.species.img], 'sCircle')
+    createStoryPage(storyStrs[2], ['./images/space-battle.gif'], '')
+    createStoryPage(storyStrs[3], ['./stormtroops.gif'], '')
+    createStoryPage(storyStrs[4], [s.nemesis.img], '')
+    createStoryPage(storyStrs[5], [s.species.img, s.weapon.img, s.nemesis.img], '')
+  } // end of storyCreator (aggregates helper functions)
+
+
+  function createStrs(s) {
+
+    let result = []
+
+    // page 1
+    result.push(`
+    Our hero, ${s.name}, exits hyperspace in his recently repaired ${s.starship.text}. He looks at his nav computer for the beacon, indicating the rendevous point with the rebel alliance fleet. ${s.name} is at the planet CORELLIA, which is currently under siege. \n
+
+    The imperial blockade over CORELLIA has lasted over a month. A ring of STAR DESTROYERS ominously orbits around the planet, while more and more rebel ships assemble at the edge of the system. 
+    `)
+
+    // page 2
+    result.push(`
+      ${s.name} hears comm static start buzzing from the console. \n
+      "Hey! ${s.sidekick.text} here! T-minus 2 minutes until rendevous point! ADMIRAL ACKBAR is hailing all ships. Main fleet will engage in a wedge formation. The primary target is their flagship star destroyer, commanded by ${s.nemesis.text}" \n
+      "${s.nemesis.text}, you say?" replies ${s.name}. "If only we could take out ${s.nemesis.text} in this operation and bring peace to the galaxy! "
+    `)
+
+    // page 3
+    result.push(`
+      The space battle begins over CORELLIA. Rebel cruisers enter the firing range of the star destroyers, and turbolaser volleys are exchanged. \n 
+
+      ${s.name} opens a channel to ${s.sidekick.text}. "Hey, we need to make a run at their flagship! Wait for ADMIRAL ACKBAR to draw their fire!"
+
+      "${s.name}, you crazy nerf-herder! There's got to be a hundred TIE fighters defending that one ship!"
+
+      "Don't worry", says ${s.name}. "Avoid the dogfights and go straight for the docking bay. Follow the rebel X-wing squadrons in and break off as they attack the shield generators. TIEs will stick on them."
+    `)
+
+    // page 4 
+    result.push(`
+      After crashing into the docking bay, ${s.name} and ${s.sidekick.text} pull out their ${s.weapon.text}s and run towards the bay doors. \n 
+
+      Suddenly, the doors slide open and dozens of stormtroopers brandish their rifles. \n 
+
+      "Looks like we're gonna have to do this the hard way." says ${s.name}. \n
+
+      "Didn't realize there was an easy way!" cries ${s.sidekick.text}. 
+    `)
+
+    // page 5 
+    result.push(`
+      ${s.name} and ${s.sidekick.text} engage the stormtroopers in the hangar and leave a mess of bodies on the ground. In the commotion, a presence makes itself known and all the remaining stormtroopers quickly retreat and take cover in adjacent rooms. \n
+
+      "${s.name}, is it? It has been too long." \n
+
+      "${s.nemesis.text}! I was going to come look for you but you brought yourself to me." sneered ${s.name}.
+    `)
+
+    // page 6
+    result.push(`
+      ${s.name} and ${s.nemesis.text} tighten their grips on their ${s.weapon.text}s. \n 
+      ${s.nemesis.text} smiles menacingly. "Fitting to settle this with a duel, isn't it?"
+
+      "You're here to chat or fight?" replies ${s.name}. \n 
+
+      Sparks fly around the room as both combatants brandish their weapons. 
+    `)
+
+
+    return result
+  } // end of createStrs
+
+  function createStoryPage(storyStr, sImgPaths, sImgClass, btn) {
+    // default sImgClass is empty, and appears with slight border-radius
+    // current option is sCircle adder class which has border-radius 50%
+
+    const sContainer = createElemWParent(main, 'sContainer', 'div')
+    sContainer.style.display = 'none'
+
+    // image container 
+    const sImgCont = createElemWParent(sContainer, 'sImgCont', 'div')
+
+    for (sImgPath of sImgPaths) {
+      // create an image with class sImg 
+      const sImgDiv = createElemWParent(sImgCont, 'sImgDiv', 'div')
+      const sImg = createElemWParent(sImgDiv, 'sImg', 'img')
+      sImg.setAttribute('src', sImgPath)
+      sImg.setAttribute('alt', sImgPath)
+      if (sImgClass) {
+        sImg.className += ' ' + sImgClass
+      }
+    }
+
+    // create a paragraph with our text in it
+    const sParagraph = createElemWParent(sContainer, 'sParagraph', 'div')
+    sParagraph.innerText = storyStr
+
+    // create button to go to next part
+    const sButton = createElemWParent(sContainer, 'sButton', 'div')
+    sButton.innerText = btn ? btn.text : 'Next!'
+    sButton.addEventListener('click', () => {
+      if (!btn) {
+        nextSibClass(sButton, 'sContainer', 'flex')
+      } else {
+        btn.eventFunc()
+      }
+
+    })
+
+  } // end of createStory 
+
 
 
 
