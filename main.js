@@ -58,11 +58,19 @@ window.onload = () => {
 
   // note: swapi not all starship indices work
   // 2, 3, 5, 9, 11, 15
-  const maxPeople = 87
-  const maxVehicles = 39
-  const maxStarships = 37
-  const maxPlanets = 61
-  const maxSpecies = 37
+  // const maxPeople = 87
+  // const maxVehicles = 39
+  // const maxStarships = 37
+  // const maxPlanets = 61
+  // const maxSpecies = 37
+
+  const swapiMax = {
+    people: 87,
+    vehicles: 39,
+    starships: 37,
+    planets: 61,
+    species: 37
+  }
 
   const weapons = [
     { text: 'Lightsaber', img: './images/img-lightsaber.png' },
@@ -130,26 +138,25 @@ window.onload = () => {
     // 3 starships
     // 2 nemeses
 
-    // queryAPIs(4, maxSpecies, 'species', 'What species are you?')
-    generateQDivByCat(randToArr(4, maxSpecies), 'species', maxSpecies, 'What species are you?', 'species')
+    generateQDivByCat(randToArr(4, swapiMax.species), 'species', 'What species are you?', 'species', ['Human', 'Bothan', 'Wookie', 'Mon calamari'])
 
-    const sidIndices = randToArr(3, maxSpecies)
+    const sidIndices = randToArr(3, swapiMax.species)
 
-    generateQDivByCat(sidIndices, 'people', maxPeople, 'Who is your sidekick?', 'sidekick')
+    generateQDivByCat(sidIndices, 'people', 'Who is your sidekick?', 'sidekick', ['Chewbacca', 'R2-D2', 'Anakin Skywalker'])
 
-    generateQDivByCat(randToArr(3, maxStarships), 'starships', maxStarships, 'Which starship do you pilot?', 'starship')
+    generateQDivByCat(randToArr(3, swapiMax.starships), 'starships', 'Which starship do you pilot?', 'starship', ['X-wing', 'Imperial Shuttle', 'Imperial Class Star Destroyer'])
 
     // need to go back and check against sidekicks to prevent 
     // repeat characters from showing up
     let nemIndices = []
     for (let i = 0; i < 2; i++) {
-      let currNum = Math.floor(Math.random() * maxPeople) + 1
+      let currNum = Math.floor(Math.random() * swapiMax.people) + 1
       while (nemIndices.includes(currNum) || sidIndices.includes(currNum)) {
-        currNum = Math.floor(Math.random() * maxPeople) + 1
+        currNum = Math.floor(Math.random() * swapiMax.people) + 1
       }
       nemIndices.push(currNum)
     }
-    generateQDivByCat(nemIndices, 'people', maxPeople, 'Who is ultimate nemesis?', 'nemesis')
+    generateQDivByCat(nemIndices, 'people', 'Who is ultimate nemesis?', 'nemesis', ['General Grievous', 'Obi-Wan Kenobi'])
 
 
     // because of async nature, when the second question is answered the other divs should be constructed 
@@ -265,7 +272,7 @@ window.onload = () => {
 
 
   // function generateQuestionDiv()
-  function generateQDivByCat(nums, qType, qMax, qStr, qRecord) {
+  function generateQDivByCat(nums, qType, qStr, qRecord, qDefaults) {
     // this function calls swapi and accesses a category
     // because many categories are issing individual id's
     // this looks at what's available
@@ -292,11 +299,12 @@ window.onload = () => {
     // https://swapi.co/api/starships/?page=1
     const randNums = nums
 
-    for (randNum of randNums) {
+    for (let i = 0; i < randNums.length; i++) {
       // first, each page holds ten things so we pick a page
-      const page = Math.floor(randNum / 10) + 1
-      const ind = randNum % 10
+      const page = Math.floor(randNums[i] / 10) + 1
+      const ind = randNums[i] % 10
       try {
+
         axios.get(urlSWAPI + qType + '/?page=' + page)
           .then((res) => {
             // console.log(res)
@@ -304,10 +312,16 @@ window.onload = () => {
           }).then((results) => {
 
             // ind is the index once you are on the right page of 10
-
+            console.log('Accessed SWAPI')
             return { text: results[ind].name }
 
-          }).then((queryObj) => {
+          })
+          .catch((er) => {
+            console.log(er)
+
+            return { text: qDefaults[i] }
+          })
+          .then((queryObj) => {
 
             axios.get(urlGcseSW + '&q=' + queryObj.text)
               .then((res) => {
@@ -315,6 +329,8 @@ window.onload = () => {
                 const queryImg = res.data.items[0].link
                 queryObj.img = queryImg
 
+                console.log('Accessed Google CSE')
+                console.log(queryObj)
                 return queryObj
               }).then((ans) => {
                 // for each answer choice make a new answer button
