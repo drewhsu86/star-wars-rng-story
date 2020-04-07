@@ -550,19 +550,19 @@ window.onload = () => {
     // page 2
     result.push(`
       ${s.name} hears comm static start buzzing from the console. \n
-      "Hey! ${s.sidekick.text} here! T-minus 2 minutes until rendevous point! ADMIRAL ACKBAR is hailing all ships. Main fleet will engage in a wedge formation. The primary target is their flagship star destroyer, commanded by ${s.nemesis.text}" \n
-      "${s.nemesis.text}, you say?" replies ${s.name}. "If only we could take out ${s.nemesis.text} in this operation and bring peace to the galaxy! "
+      ${s.sidekick.text}: "Hey! ${s.sidekick.text} here! T-minus 2 minutes until rendevous point! ADMIRAL ACKBAR is hailing all ships. Main fleet will engage in a wedge formation. The primary target is their flagship star destroyer, commanded by ${s.nemesis.text}" \n
+      ${s.name}: "${s.nemesis.text}, you say? If only we could take out ${s.nemesis.text} in this operation and bring peace to the galaxy!"
     `)
 
     // page 3
     result.push(`
       The space battle begins over CORELLIA. Rebel cruisers enter the firing range of the star destroyers, and turbolaser volleys are exchanged. \n 
 
-      ${s.name} opens a channel to ${s.sidekick.text}. "Hey, we need to make a run at their flagship! Wait for ADMIRAL ACKBAR to draw their fire!"
+      ${s.name} opens a channel to ${s.sidekick.text}. "Hey, we need to make a run at their flagship! Wait for ADMIRAL ACKBAR to draw their fire!" \n
 
-      "${s.name}, you crazy nerf-herder! There's got to be a hundred TIE fighters defending that one ship!"
+      ${s.sidekick.text}: "${s.name}, you crazy nerf-herder! There's got to be a hundred TIE fighters defending that one ship!" \n
 
-      "Don't worry", says ${s.name}. "Avoid the dogfights and go straight for the docking bay. Follow the rebel X-wing squadrons in and break off as they attack the shield generators. TIEs will stick on them."
+      ${s.name}: "Don't worry. Avoid the dogfights and go straight for the docking bay. Follow the rebel X-wing squadrons in and break off as they attack the shield generators. TIEs will stick on them."
     `)
 
     // page 4 
@@ -571,26 +571,27 @@ window.onload = () => {
 
       Suddenly, the doors slide open and dozens of stormtroopers brandish their rifles. \n 
 
-      "Looks like we're gonna have to do this the hard way." says ${s.name}. \n
+      ${s.name}: "Looks like we're gonna have to do this the hard way." \n
 
-      "Didn't realize there was an easy way!" cries ${s.sidekick.text}. 
+      ${s.sidekick.text}: "Didn't realize there was an easy way!"
     `)
 
     // page 5 
     result.push(`
       ${s.name} and ${s.sidekick.text} engage the stormtroopers in the hangar and leave a mess of bodies on the ground. In the commotion, a presence makes itself known and all the remaining stormtroopers quickly retreat and take cover in adjacent rooms. \n
 
-      "${s.name}, is it? It has been too long." \n
+      ${s.nemesis.text}: "${s.name}, is it? It has been too long." \n
 
-      "${s.nemesis.text}! I was going to come look for you but you brought yourself to me." sneered ${s.name}.
+      ${s.name}: "${s.nemesis.text}! I was going to come look for you but you brought yourself to me." sneered ${s.name}.
     `)
 
     // page 6
     result.push(`
       ${s.name} and ${s.nemesis.text} tighten their grips on their ${s.weapon.text}S. \n 
-      ${s.nemesis.text} smiles menacingly. "Fitting to settle this with a duel, isn't it?"
+      ${s.nemesis.text} smiles menacingly. \n
+      ${s.nemesis.text}: "Fitting to settle this with a duel, isn't it?"
 
-      "You're here to chat or fight?" replies ${s.name}. \n 
+      ${s.name}: "You're here to chat or fight?"  \n 
 
       Sparks fly around the room as both combatants brandish their weapons. 
     `)
@@ -598,10 +599,13 @@ window.onload = () => {
     // page 7 
     result.push(`
       ${s.nemesis.text} falls to the ground with a smoking wound in their torso. \n 
-      ${s.name} walks closer with his ${s.weapon.text} raised. "Any last words?" \n 
-      ${s.nemesis.text} gives ${s.name} a condescending look. "You will never understand the power of the dark side of the force." But ${s.nemesis.text} barely has any breath left, struggling to speak these words. \n 
+      ${s.name} walks closer with his ${s.weapon.text} raised. \n
+      ${s.name}: "Any last words?" \n 
+      ${s.nemesis.text} gives ${s.name} a condescending look. \n
+      ${s.nemesis.text}: "You will never understand the power of the dark side of the force." But ${s.nemesis.text} barely has any breath left, struggling to speak these words. \n 
 
-      ${s.name} turns to ${s.sidekick.text}. "Call it in to ADMIRAL ACKBAR. We've finally defeated ${s.nemesis.text}. Have them send some ships to capture this flagship." \n 
+      ${s.name} turns to ${s.sidekick.text}. \n
+      ${s.name}: "Call it in to ADMIRAL ACKBAR. We've finally defeated ${s.nemesis.text}. Have them send some ships to capture this flagship." \n 
 
       Suddenly the holographic projector on the wall activates. \n 
       "You think it is so easy to defeat the dark side? We shall see, my friend. Huehuehue..." 
