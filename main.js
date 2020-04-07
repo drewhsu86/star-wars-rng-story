@@ -550,7 +550,7 @@ window.onload = () => {
     // page 2
     result.push(`
       ${s.name} hears comm static start buzzing from the console. \n
-      ${s.sidekick.text}: "Hey! ${s.sidekick.text} here! T-minus 2 minutes until rendevous point! ADMIRAL ACKBAR is hailing all ships. Main fleet will engage in a wedge formation. The primary target is their flagship star destroyer, commanded by ${s.nemesis.text}" \n
+      ${s.sidekick.text}: "Hey! ${s.sidekick.text} here! T-minus 2 minutes until rendevous point! ADMIRAL ACKBAR is hailing all ships. Main fleet will engage in a wedge formation. The primary target is their flagship star destroyer, commanded by ${s.nemesis.text}." \n
       ${s.name}: "${s.nemesis.text}, you say? If only we could take out ${s.nemesis.text} in this operation and bring peace to the galaxy!"
     `)
 
