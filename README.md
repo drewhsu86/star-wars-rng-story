@@ -11,6 +11,9 @@ Just answer some easy multiple choice questions and our custom AI will write a t
 
 After your choices are entered, just hit finish and voila! Your new Star Wars story is ready to be viewed on your browser or mobile device.
 
+Project link here:  
+[Star Wars RNG Story](http://starwars-rng-story.surge.sh/)
+
 ---
 
 
@@ -140,3 +143,6 @@ Expected vs actual hours spent per task
 | css pass over all relevant elements | 4 | ? |
 | css and bugs | 8 | ? |
 | Total Hours | 41  | ?  |
+
+
+
