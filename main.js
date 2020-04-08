@@ -75,7 +75,7 @@ window.onload = () => {
          He then found out that the creator of SWAPI no longer maintains it, and that the Pokemon API was recommended. But the young man had already designed and coded this app, so the Pokemon would be a bad fit. 
          </p>
          <p>
-         He worked tirelessly until his application was working properly, and then worked on making this scrolling text. Just google "Star Wars scrolling text CSS". Many people use similar methods with the CSS tags "perspective" and "transform", and the CSS animation system. 
+         He worked tirelessly until his application was working properly, and then worked on making this scrolling text. Just google "Star Wars scrolling text CSS". Many people use similar methods with the CSS properties "perspective" and "transform", and the CSS animation system. 
          </p>
          <p>
          If the application has finished loading, enter your name and try out his application. Or you can wait and watch the scroll again.
@@ -495,6 +495,7 @@ window.onload = () => {
                 answers.append(answerDiv)
 
                 // at the end of 4+3+3+2 calls 
+                // the submit button should be enabled
                 apiLoadInfo.qAddReady()
                 if (apiLoadInfo.qCheck()) {
                   submitButton.disabled = false
