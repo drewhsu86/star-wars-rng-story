@@ -40,7 +40,8 @@ Screenshots:
 
 ![SWAPI IN POSTMAN](./images/postman-swapi.png)
 
-#### 2. GIPHY (in postman):
+#### 2. GIPHY (in postman):  
+(GIPHY API NOT USED IN FINAL APP)
 
 ![GIPHY IN POSTMAN](./images/postman-giphy.png)
 
