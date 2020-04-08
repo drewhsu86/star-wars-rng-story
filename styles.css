@@ -1,6 +1,6 @@
 /*
   default css is for mobile or below 600px width
-  media query for min-width 600px at bottom
+  media query for min-width (at some threshold) at bottom
 */
 
 body {
@@ -90,6 +90,24 @@ button:hover {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+
+.loadBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-self: center;
+  max-height: 40px;
+  max-width: 100px;
+}
+
+.loadBullet {
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 10px;
+  text-align: center;
 }
 
 .answerDiv {
@@ -224,7 +242,11 @@ button:hover {
   animation: blurring 3s infinite;
 }
 
-@media (min-width: 600px) {
+/*
+start of media query for larger screen width
+*/
+
+@media (min-width: 850px) {
 
   .sImgCont {
 
@@ -251,6 +273,8 @@ button:hover {
   }
 
 }
+
+/* outside of media query */
 
 /*
 stars effect

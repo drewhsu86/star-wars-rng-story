@@ -67,6 +67,10 @@ window.onload = () => {
     qAddReady: function () {
       this.qReady++
       console.log('qAddReady: qReady = ' + this.qReady)
+      // this object apiLoadInfo and the functions on the bottom
+      // createLoadBox and updateLoadBox are related
+      // in a refactoring, would write those as methods
+      updateLoadBox()
     }
   }
 
@@ -199,16 +203,20 @@ window.onload = () => {
     question.innerText = `What is your name?`
     qContainer.append(question)
 
+    // answers is a containder div with flex styling we use everywhere 
+    // we can specify this answers as a form instead of div 
     const answers = document.createElement('form')
     answers.className = 'answers'
     qContainer.append(answers)
 
+    // add an input for the name to go into 
     const answerInput = document.createElement('input')
     answerInput.className = 'answerInput'
     answerInput.type = 'text'
     answerInput.setAttribute('placeholder', 'Type your name here')
     answers.append(answerInput)
 
+    // then add a submit button 
     submitButton = document.createElement('button')
 
     if (apiLoadInfo.qCheck()) {
@@ -231,6 +239,10 @@ window.onload = () => {
       }
     })
 
+    // add a loading box to indicate which API calls returned 
+    answers.append(createLoadBox(apiLoadInfo.qNeeded))
+
+    // add the whole thing to main 
     main.append(qContainer)
     return qContainer
 
@@ -680,8 +692,47 @@ window.onload = () => {
   } // end of createStory 
 
 
+  // loading box that shows the number of qReady in apiLoadInfo
+  function createLoadBox(numLoads) {
+    const loadBox = document.createElement('div')
+    loadBox.className = 'loadBox'
 
+    for (let i = 0; i < numLoads; i++) {
+      const loadBullet = document.createElement('span')
+      loadBullet.className = 'loadBullet'
+      loadBullet.innerText = '. '
+      loadBox.append(loadBullet)
+    }
 
+    return loadBox
+  } // end of createLoadBox
+
+  // loading box updating function that shows qReady in apiLoadInfo 
+  function updateLoadBox() {
+    // reads qReady from apiLoadInfo and changes the loadBullets
+    // in loadBox 
+
+    const loadBox = document.querySelector('.loadBox')
+    // assumes loadBox has structure of only .loadBullets
+    const loadBullets = loadBox.children
+
+    for (let i = 0; i < loadBullets.length; i++) {
+      // qReady starts at 0 and ends at 12
+      // at 0 ready, none of the elements should be adjusted
+      // so we compare using < instead of <= 
+      if (i < apiLoadInfo.qReady) {
+        loadBullets[i].innerText = '> Data' + (i + 1) + ' loaded_ '
+      } else {
+        loadBullets[i].innerText = '> ...'
+      }
+    }
+
+    // hide the loading info if loaded 
+    if (loadBullets.length <= apiLoadInfo.qReady) {
+      loadBox.style.display = 'none'
+    }
+
+  } // end of updateLoadBox
 
 
 
