@@ -745,12 +745,14 @@ window.onload = () => {
     const loadBox = document.createElement('div')
     loadBox.className = 'loadBox'
 
+
     for (let i = 0; i < numLoads; i++) {
       const loadBullet = document.createElement('span')
       loadBullet.className = 'loadBullet'
-      loadBullet.innerText = '. '
+      loadBullet.innerText = '.'
       loadBox.append(loadBullet)
     }
+
 
     return loadBox
   } // end of createLoadBox
@@ -769,15 +771,16 @@ window.onload = () => {
       // at 0 ready, none of the elements should be adjusted
       // so we compare using < instead of <= 
       if (i < apiLoadInfo.qReady) {
-        loadBullets[i].innerText = '> Data' + (i + 1) + ' loaded_ '
+        loadBullets[i].innerText = '|'
       } else {
-        loadBullets[i].innerText = '> ...'
+        loadBullets[i].innerText = '.'
       }
     }
 
     // hide the loading info if loaded 
     if (loadBullets.length <= apiLoadInfo.qReady) {
-      loadBox.style.display = 'none'
+      // console.log('Checking for loadBox: ' + apiLoadInfo.qReady)
+      loadBox.innerHTML = ''
     }
 
   } // end of updateLoadBox
