@@ -222,10 +222,12 @@ window.onload = () => {
 
     answers.addEventListener('submit', (evt) => {
       evt.preventDefault()
-      if (answerInput.value) {
+      if (answerInput.value && apiLoadInfo.qCheck()) {
         console.log(answerInput.value)
         quizSelections.name = (answerInput.value.toUpperCase())
         nextSibClass(answerInput, 'qContainer')
+      } else {
+        console.log("Name couldn't submit")
       }
     })
 
@@ -411,6 +413,7 @@ window.onload = () => {
                 } else {
                   const answerImgSub = document.createElement('div')
                   answerText.className = 'answerImgSub'
+                  answerText.innerText = ans.text.toUpperCase()
                   imgHolder.append(answerImgSub)
                 }
 
@@ -609,7 +612,7 @@ window.onload = () => {
       ${s.nemesis.text} smiles menacingly. \n
       ${s.nemesis.text}: "Fitting to settle this with a duel, isn't it?"
 
-      ${s.name}: "You're here to chat or fight?"  \n 
+      ${s.name}: "You're here to chat? Or fight?"  \n 
 
       Sparks fly around the room as both combatants brandish their weapons. 
     `)
