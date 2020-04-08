@@ -135,19 +135,19 @@ Expected vs actual hours spent per task
 | Goal      | Exp. Hrs          | Actual Hrs  | Completed |
 | ------------- |:-------------:| -----| ------------ |
 | __Sunday and Monday__ | | | |
-| *finish project plan | 8 | 8 | Y |
-| *get project approval     |   1 | 1 |  Y |
+| * finish project plan | 8 | 8 | Y |
+| * get project approval     |   1 | 1 |  Y |
 | __Monday__ | | | |
-| *HTML skeleton & css (flexbox only)   |    3 | 1 |  Y |
-| *JS - quiz records answers and continues | 5 | 8 |  Y |
+| * HTML skeleton & css (flexbox only)   |    3 | 1 |  Y |
+| * JS - quiz records answers and continues | 5 | 8 |  Y |
 | __Tuesday__ | | | |
-| *JS - recorded answers and API calls create story | 4 | 2 |  Y |
-| *JS - generated story appends proper divs | 4 | 6 |  Y |
+| * JS - recorded answers and API calls create story | 4 | 2 |  Y |
+| * JS - generated story appends proper divs | 4 | 6 |  Y |
 | __Wednesday__ | | | |
-| *all basic MVP functionality runs beginning to end | 4 | 1 |  Y |
-| *css pass over all relevant elements | 4 | 8 | Y | 
+| * all basic MVP functionality runs beginning to end | 4 | 1 |  Y |
+| * css pass over all relevant elements | 4 | 8 | Y | 
 | __Thursday__ | | | |
-| *css and bugs | 8 | ? | N |
+| * css and bugs | 8 | ? | N |
 | __Total Hours__ | 41  | ?  | N |
 
 ### Comments and Notes:
