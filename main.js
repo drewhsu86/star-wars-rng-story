@@ -472,8 +472,8 @@ window.onload = () => {
                   imgHolder.append(answerImg)
                 } else {
                   const answerImgSub = document.createElement('div')
-                  answerText.className = 'answerImgSub'
-                  answerText.innerText = ans.text.toUpperCase()
+                  answerImgSub.className = 'answerImgSub'
+                  answerImgSub.innerText = ans.text.toUpperCase()
                   imgHolder.append(answerImgSub)
                 }
 
@@ -711,13 +711,16 @@ window.onload = () => {
     const sImgCont = createElemWParent(sContainer, 'sImgCont', 'div')
 
     for (sImgPath of sImgPaths) {
-      // create an image with class sImg 
-      const sImgDiv = createElemWParent(sImgCont, 'sImgDiv', 'div')
-      const sImg = createElemWParent(sImgDiv, 'sImg', 'img')
-      sImg.setAttribute('src', sImgPath)
-      sImg.setAttribute('alt', sImgPath)
-      if (sImgClass) {
-        sImgDiv.className += ' ' + sImgClass
+      // if img path exists
+      if (sImgPath) {
+        // create an image with class sImg 
+        const sImgDiv = createElemWParent(sImgCont, 'sImgDiv', 'div')
+        const sImg = createElemWParent(sImgDiv, 'sImg', 'img')
+        sImg.setAttribute('src', sImgPath)
+        sImg.setAttribute('alt', sImgPath)
+        if (sImgClass) {
+          sImgDiv.className += ' ' + sImgClass
+        }
       }
     }
 
