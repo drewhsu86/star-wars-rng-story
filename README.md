@@ -130,12 +130,12 @@ Expected vs actual hours spent per task
 
 | Goal      | Exp. Hrs          | Actual Hrs  |
 | ------------- |:-------------:| -----|
-| finish project plan | 8 | ? |
-| get project approval     |   1 | ? |
-| HTML skeleton & css (flexbox only)   |    3 | ? |
-| JS - quiz records answers and continues | 5 | ? |
-| JS - recorded answers and API calls create story | 4 | ? |
-| JS - generated story appends proper divs | 4 | ? |
+| finish project plan | 8 | 8 |
+| get project approval     |   1 | 0.33 |
+| HTML skeleton & css (flexbox only)   |    3 | 1 |
+| JS - quiz records answers and continues | 5 | 8 |
+| JS - recorded answers and API calls create story | 4 | 2 |
+| JS - generated story appends proper divs | 4 | 6 |
 | all basic functionality runs beginning to end | 4 | ? |
 | css pass over all relevant elements | 4 | ? |
 | css and bugs | 8 | ? |

@@ -374,6 +374,14 @@ window.onload = () => {
                 console.log('Accessed Google CSE')
                 // console.log(queryObj)
                 return queryObj
+              }).catch((er) => {
+
+                console.log(er)
+
+                queryObj.img = ''
+
+                return queryObj
+
               }).then((ans) => {
                 // for each answer choice make a new answer button
                 // aArr should be an array holding objects of the form:
@@ -394,11 +402,17 @@ window.onload = () => {
                 imgHolder.style.borderColor = colorWheel[colorInd]
                 colorInd++
 
-                const answerImg = document.createElement('img')
-                answerImg.className = 'answerImg'
-                answerImg.setAttribute('src', ans.img)
-                answerImg.setAttribute('alt', ans.text)
-                imgHolder.append(answerImg)
+                if (ans.img) {
+                  const answerImg = document.createElement('img')
+                  answerImg.className = 'answerImg'
+                  answerImg.setAttribute('src', ans.img)
+                  answerImg.setAttribute('alt', ans.text)
+                  imgHolder.append(answerImg)
+                } else {
+                  const answerImgSub = document.createElement('div')
+                  answerText.className = 'answerImgSub'
+                  imgHolder.append(answerImgSub)
+                }
 
 
                 imgHolder.addEventListener('click', () => {
@@ -550,8 +564,12 @@ window.onload = () => {
     // page 2
     result.push(`
       ${s.name} hears comm static start buzzing from the console. \n
+
       ${s.sidekick.text}: "Hey! ${s.sidekick.text} here! T-minus 2 minutes until rendevous point! ADMIRAL ACKBAR is hailing all ships. Main fleet will engage in a wedge formation. The primary target is their flagship star destroyer, commanded by ${s.nemesis.text}." \n
-      ${s.name}: "${s.nemesis.text}, you say? If only we could take out ${s.nemesis.text} in this operation and bring peace to the galaxy!"
+
+      ${s.name}: "${s.nemesis.text}, you say? If only we could take out ${s.nemesis.text} in this operation and bring peace to the galaxy!" \n
+
+      ${s.sidekick.text}: "Stay calm, ${s.name}. ${s.nemesis.text}'S betrayal hurt us all greatly, but don't do anything rash!"
     `)
 
     // page 3

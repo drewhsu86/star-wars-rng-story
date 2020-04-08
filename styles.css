@@ -1,3 +1,8 @@
+/*
+  default css is for mobile or below 600px width
+  media query for min-width 600px at bottom
+*/
+
 body {
   display: flex;
   flex-direction: column;
@@ -9,8 +14,16 @@ body {
   color: yellow;
 }
 
+header {
+  perspective: 100px;
+
+}
+
 header h1 {
-  font-size: 80px;
+  font-size: 35px;
+  font-style: italic;
+  font-weight: bold;
+  
 }
 
 footer {
@@ -20,11 +33,13 @@ footer {
 
 footer a:link, footer a:visited  {
   text-decoration: none;
-  color: orange;
+  color: yellow;
+  font-weight: bold;
 }
 
 footer a:hover, footer a:active {
   color: #770077;
+  font-weight: bold;
 }
 
 /* main {
@@ -112,6 +127,13 @@ button:hover {
   
 }
 
+.answerImgSub {
+  background-color: black;
+  color: yellow;
+  font-size: 30px;
+  margin: 50%;
+}
+
 .sContainer {
   display: flex;
   flex-direction: column;
@@ -176,7 +198,7 @@ button:hover {
 .sImg {
   width: 100%;
   min-height: 300px;
-  max-width: 60vw;
+  max-width: 100%;
 }
 
 .sCircle {
@@ -189,16 +211,16 @@ button:hover {
 
 @keyframes blurring {
   from {
-    filter: blur(60%);
-  } to {
-    filter: blur(10%);
+    filter: blur(0%);
+  } 
+  to {
+    filter: blur(80%);
   }
 }
 
 .sHolo {
   filter: sepia(100%) hue-rotate(45deg);
-  animation-name: blurring;
-  animation-duration: 2s;
+  animation: blurring 3s infinite;
 }
 
 @media (min-width: 600px) {
@@ -216,6 +238,15 @@ button:hover {
     justify-content: space-around;
     align-items: space-around;
     
+  }
+
+  header h1 {
+    font-size: 80px;
+    
+  }
+
+  img {
+    max-width: 60vw;
   }
 
 }
