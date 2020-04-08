@@ -46,6 +46,46 @@
 
 // start of window onload
 window.onload = () => {
+  // for scroll
+  starWarsScrollText = `
+      <div class="crawl">
+        <div class="title">
+         <h2> STARWARS[0] = { </h2>
+
+         <h4> // index starts at zero </h4>
+         <h3> episode: 0, </h3>
+         <h3> scrollText:  \`</h3>
+        </div>
+         <p>
+         A long time ago, in a galaxy far, far away...
+         </p>
+         <p>
+         A young man added Lorem Ipsum to his app, which also makes API calls to Star Wars API. 
+         </p>
+         <p> 
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi quis eveniet corrupti assumenda ex nisi illum
+         quos voluptatibus officia beatae consequatur voluptate veritatis quae, explicabo dignissimos ea odit iure
+         excepturi.
+         </p>
+         <p>
+         The man accessed Star Wars API and pulled a bunch of data. But then Star Wars API went down and he was sad. He then used the power of Google Custom Search to search for Star Wars images online. 
+         </p>
+         <p>
+         He then found out that the creator of SWAPI no longer maintains it, and that the Pokemon API was recommended. But the young man had already designed and coded this app, so the Pokemon would be a bad fit. 
+         </p>
+         <p>
+         He worked tirelessly until his application was working properly, and then worked on making this scrolling text. Just google "Star Wars scrolling text CSS". Many people use similar methods with the CSS tags "perspective" and "transform", and the CSS animation system. 
+         </p>
+         <p>
+         If the application has finished loading, enter your name and try out his application. Or you can wait and watch the scroll again.
+         </p>
+         <p>
+         \` \n
+         }
+         </p>
+      </div>
+    `
+
   // query selector(s)
   const main = document.querySelector('main')
   const header = document.querySelector('header')
@@ -207,6 +247,7 @@ window.onload = () => {
     // we can specify this answers as a form instead of div 
     const answers = document.createElement('form')
     answers.className = 'answers'
+    qContainer.style.alignItems = 'center'
     qContainer.append(answers)
 
     // add an input for the name to go into 
@@ -241,6 +282,12 @@ window.onload = () => {
 
     // add a loading box to indicate which API calls returned 
     answers.append(createLoadBox(apiLoadInfo.qNeeded))
+
+    // add a text scroll to the container
+    const starWarsScroll = document.createElement('section')
+    starWarsScroll.className = 'starwars'
+    starWarsScroll.innerHTML = starWarsScrollText
+    qContainer.append(starWarsScroll)
 
     // add the whole thing to main 
     main.append(qContainer)

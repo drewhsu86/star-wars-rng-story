@@ -15,7 +15,6 @@ body {
 }
 
 header {
-  perspective: 100px;
   position: relative;
 }
 
@@ -229,10 +228,10 @@ button:hover {
 }
 
 @keyframes blurring {
-  from {
+  0% {
     filter: blur(0%);
   } 
-  to {
+  100% {
     filter: blur(80%);
   }
 }
@@ -241,40 +240,6 @@ button:hover {
   filter: sepia(100%) hue-rotate(45deg);
   animation: blurring 3s infinite;
 }
-
-/*
-start of media query for larger screen width
-*/
-
-@media (min-width: 850px) {
-
-  .sImgCont {
-
-    flex-direction: row;
-
-  }
-
-  .answers {
-    
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: space-around;
-    
-  }
-
-  header h1 {
-    font-size: 80px;
-    
-  }
-
-  img {
-    max-width: 60vw;
-  }
-
-}
-
-/* outside of media query */
 
 /*
 stars effect
@@ -471,3 +436,102 @@ pastebin source: https://pastebin.com/gEfdRwgc
     659px 1860px #fff, 388px 1412px #fff, 1212px 458px #fff, 755px 1468px #fff,
     696px 1654px #fff, 1144px 60px #fff;
 }
+
+/*
+  star wars scrolling effect 
+  https://css-tricks.com/snippets/css/star-wars-crawl-text/
+*/
+
+@keyframes crawl {
+  0% {
+    top: 100vh;
+    
+    transform: rotateX(20deg) translateZ(0);
+  }
+  100% {
+  top: -600vh;
+  
+  transform: rotateX(25deg) translateZ(-2500px);
+  }
+}
+
+
+
+.starwars {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  height: 200px;
+  margin-top: 30px;
+
+  perspective: 400px;
+
+  color: yellow;
+  
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  line-height: 150%;
+  text-align: justify;
+
+  align-self: center;
+  overflow: hidden;
+}
+
+.crawl {
+  position: relative;
+  top: -100px;
+  transform-origin: 50% 100%;
+  animation: crawl 75s linear;
+  animation-iteration-count: infinite;
+  
+}
+
+.title {
+  text-align: center;
+}
+
+/*
+start of media query for larger screen width
+*/
+
+@media (min-width: 850px) {
+
+  .sImgCont {
+
+    flex-direction: row;
+
+  }
+
+  .answers {
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: space-around;
+    
+  }
+
+  header h1 {
+    font-size: 80px;
+    
+  }
+
+  img {
+    max-width: 60vw;
+  }
+
+
+}
+
+/* outside of media query above width 800px */
+
+@media (max-width 800px) {
+  .starwars {
+    display: none;
+  }
+}
+
+
+
