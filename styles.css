@@ -527,6 +527,14 @@ start of media query for larger screen width
     width: 60vw;
   }
 
+  .sCircle {
+    border: 3px dotted yellow;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    
+  }
+
 }
 
 /* outside of media query above width 800px */
