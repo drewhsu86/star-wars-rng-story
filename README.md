@@ -22,7 +22,7 @@ Project link here:
 SWAPI
 * In order to fill out our choices in the quizzes and to fill in background characters in the story, we will choose random numbers and call the API to see who we get.
 
-GIPHY
+GIPHY (NOT USED IN FINAL APP)
 * For the face-off against the antagonist we need the most meme-y image of them as possible.
 
 Google Custom Search Engine
@@ -134,14 +134,19 @@ Expected vs actual hours spent per task
 
 | Goal      | Exp. Hrs          | Actual Hrs  | Completed |
 | ------------- |:-------------:| -----| ------------ |
+| Sunday and Monday | | | |
 | finish project plan | 8 | 8 | Y |
 | get project approval     |   1 | 0.33 |  Y |
+| Monday | | | |
 | HTML skeleton & css (flexbox only)   |    3 | 1 |  Y |
 | JS - quiz records answers and continues | 5 | 8 |  Y |
+| Tuesday | | | |
 | JS - recorded answers and API calls create story | 4 | 2 |  Y |
 | JS - generated story appends proper divs | 4 | 6 |  Y |
+| Wednesday | | | |
 | all basic MVP functionality runs beginning to end | 4 | 1 |  Y |
 | css pass over all relevant elements | 4 | 8 | Y | 
+| Thursday | | | |
 | css and bugs | 8 | ? | N |
 | Total Hours | 41  | ?  | N |
 
