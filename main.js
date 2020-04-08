@@ -205,7 +205,7 @@ window.onload = () => {
 
     generateQDivByCat(sidIndices, 'people', 'Who is your sidekick?', 'sidekick', ['Chewbacca', 'R2-D2', 'Anakin Skywalker'])
 
-    generateQDivByCat(randToArr(3, swapiMax.starships), 'starships', 'Which starship do you pilot?', 'starship', ['X-wing', 'Imperial Shuttle', 'Imperial Class Star Destroyer'])
+    generateQDivByCat(randToArr(3, swapiMax.starships), 'starships', 'Which starship do you pilot?', 'starship', ['X-wing', 'Slave One', 'Imperial Class Star Destroyer'])
 
     // need to go back and check against sidekicks to prevent 
     // repeat characters from showing up
