@@ -136,7 +136,7 @@ Expected vs actual hours spent per task
 | ------------- |:-------------:| -----| ------------ |
 | __Sunday and Monday__ | | | |
 | finish project plan | 8 | 8 | Y |
-| get project approval     |   1 | 0.33 |  Y |
+| get project approval     |   1 | 1 |  Y |
 | __Monday__ | | | |
 | HTML skeleton & css (flexbox only)   |    3 | 1 |  Y |
 | JS - quiz records answers and continues | 5 | 8 |  Y |
