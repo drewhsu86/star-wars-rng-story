@@ -22,7 +22,7 @@ header h1 {
   font-size: 35px;
   font-style: italic;
   font-weight: bold;
-  font-family: 'Poller One';
+  font-family: 'Poller One', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 footer {
