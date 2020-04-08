@@ -132,6 +132,7 @@ button:hover {
   color: yellow;
   font-size: 30px;
   margin: 50%;
+  align-self: center;
 }
 
 .sContainer {
@@ -139,7 +140,6 @@ button:hover {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  
   padding: 10px;
 
 }
