@@ -107,7 +107,7 @@ The basic idea is to make a click event listener and hover effect to make this d
 
 ### Goals: 
 
-| Day       | Goal           | Exp. Hrs  |
+| Day       | Goal           | Exp. Hrs  | 
 | ------------- |:-------------:| -----|
 | April 5 - Sunday  | finish project plan | 8 |
 | April 6 - Monday     | get project approval     |   1 |
@@ -115,7 +115,7 @@ The basic idea is to make a click event listener and hover effect to make this d
 | April 6 - Monday  | JS - quiz records answers and continues | 5 |
 | April 7 - Tuesday | JS - recorded answers and API calls create story | 4 |
 | April 7 - Tuesday | JS - generated story appends proper divs | 4 |
-| April 8 - Wednesday | all basic functionality runs beginning to end | 4 |
+| April 8 - Wednesday | all basic MVP functionality runs beginning to end | 4 |
 | April 8 - Wednesday | css pass over all relevant elements | 4 |
 | April 9 - Thursday | css and bugs day | 8 |
 
@@ -132,18 +132,24 @@ The basic idea is to make a click event listener and hover effect to make this d
 ### Timeframes:
 Expected vs actual hours spent per task
 
-| Goal      | Exp. Hrs          | Actual Hrs  |
-| ------------- |:-------------:| -----|
-| finish project plan | 8 | 8 |
-| get project approval     |   1 | 0.33 |
-| HTML skeleton & css (flexbox only)   |    3 | 1 |
-| JS - quiz records answers and continues | 5 | 8 |
-| JS - recorded answers and API calls create story | 4 | 2 |
-| JS - generated story appends proper divs | 4 | 6 |
-| all basic functionality runs beginning to end | 4 | ? |
-| css pass over all relevant elements | 4 | ? |
-| css and bugs | 8 | ? |
-| Total Hours | 41  | ?  |
+| Goal      | Exp. Hrs          | Actual Hrs  | Completed |
+| ------------- |:-------------:| -----| ------------ |
+| finish project plan | 8 | 8 | Y |
+| get project approval     |   1 | 0.33 |  Y |
+| HTML skeleton & css (flexbox only)   |    3 | 1 |  Y |
+| JS - quiz records answers and continues | 5 | 8 |  Y |
+| JS - recorded answers and API calls create story | 4 | 2 |  Y |
+| JS - generated story appends proper divs | 4 | 6 |  Y |
+| all basic MVP functionality runs beginning to end | 4 | 1 |  Y |
+| css pass over all relevant elements | 4 | 8 | Y | 
+| css and bugs | 8 | ? | N |
+| Total Hours | 41  | ?  | N |
+
+### Comments and Notes:
+1. Working with a simpler layout, without nav or aside bars, helps lower the design time a lot (CSS takes a lot of time and iteration to get perfect).
+2. I was able to run the program through while adding each feature, so it took very little time to check that MVP functionality was intact on Wednesday.
+3. I wanted to write helper functions to do things such as add my question divs by taking multiple arguments instead of writing HTML elements one by one. It worked well but the code needs to be commented and separated for readability.
+4. Hard to "stuff" features in after initial design phase even though they are on my wishlist. For example, I wanted to make the iconic Star Wars scroll as the first page of the story after it's been constructed. But making the user (myself at the time) actually felt terrible. I added the scrolling text as a feature on the front page (below the name input) so that it becomes optional and doesn't force users to wait. 
 
 
 
