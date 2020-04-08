@@ -51,7 +51,7 @@ window.onload = () => {
   const starWarsScrollText = `
       <div class="crawl">
         <div class="title">
-         <h2> STARWARS </h2>
+         <h2> STAR WARS </h2>
 
         
          <h3> Episode 0:  </h3>
