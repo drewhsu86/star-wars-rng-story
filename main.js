@@ -51,11 +51,11 @@ window.onload = () => {
   const starWarsScrollText = `
       <div class="crawl">
         <div class="title">
-         <h2> STARWARS[0] = { </h2>
+         <h2> STARWARS </h2>
 
-         <h4> // index starts at zero </h4>
-         <h3> episode: 0, </h3>
-         <h3> scrollText:  \`</h3>
+        
+         <h3> Episode 0:  </h3>
+         <h3> HTML, CSS & Javascript </h3>
         </div>
          <p>
          A long time ago, in a galaxy far, far away...
@@ -72,7 +72,7 @@ window.onload = () => {
          The man accessed Star Wars API and pulled a bunch of data. But then Star Wars API went down and he was sad. He then used the power of Google Custom Search to search for Star Wars images online. 
          </p>
          <p>
-         He then found out that the creator of SWAPI no longer maintains it, and that the Pokemon API was recommended. But the young man had already designed and coded this app, so the Pokemon would be a bad fit. 
+         He then found out that the creator of SWAPI no longer maintains it, and that the Pokemon API was recommended. But the young man had already designed and coded this app, so Pokemon would be a bad fit. 
          </p>
          <p>
          He worked tirelessly until his application was working properly, and then worked on making this scrolling text. Just google "Star Wars scrolling text CSS". Many people use similar methods with the CSS properties "perspective" and "transform", and the CSS animation system. 
@@ -80,10 +80,7 @@ window.onload = () => {
          <p>
          If the application has finished loading, enter your name and try out his application. Or you can wait and watch the scroll again.
          </p>
-         <p>
-         \` \n
-         }
-         </p>
+
       </div>
     `
 
