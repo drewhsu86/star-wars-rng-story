@@ -46,8 +46,9 @@
 
 // start of window onload
 window.onload = () => {
+
   // for scroll
-  starWarsScrollText = `
+  const starWarsScrollText = `
       <div class="crawl">
         <div class="title">
          <h2> STARWARS[0] = { </h2>
