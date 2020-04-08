@@ -21,9 +21,10 @@ header {
 header h1 {
   font-size: 35px;
   /* font-style: italic; */
-  font: bold 700;
+  font: bold 800;
   font-family: 'Kanit', 'Poller One', Tahoma, Geneva, Verdana, sans-serif;
-  letter-spacing: 6px;
+  /* letter-spacing: 6px; */
+  line-height: 30px;
 }
 
 footer {
@@ -501,7 +502,8 @@ start of media query for larger screen width
 @media (min-width: 850px) {
 
   header h1 {
-    letter-spacing: 10px;
+    font-size: 80px;
+    line-height: 70px;
   }
 
   .sImgCont {
@@ -516,11 +518,6 @@ start of media query for larger screen width
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: space-around;
-    
-  }
-
-  header h1 {
-    font-size: 80px;
     
   }
 
