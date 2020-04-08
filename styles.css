@@ -16,7 +16,7 @@ body {
 
 header {
   perspective: 100px;
-
+  position: relative;
 }
 
 header h1 {
@@ -29,6 +29,7 @@ header h1 {
 footer {
   width: 100%;
   margin-top: 100px;
+  position: relative;
 }
 
 footer a:link, footer a:visited  {
@@ -42,9 +43,9 @@ footer a:hover, footer a:active {
   font-weight: bold;
 }
 
-/* main {
-  background-color: darkgrey;
-} */
+main {
+  position: relative;
+}
 
 input {
   font-size: 30px;
@@ -257,6 +258,7 @@ youtube tutorial: https://www.youtube.com/watch?v=aywzn9cf-_U
 pastebin source: https://pastebin.com/gEfdRwgc
 */
 
+
 #stars {
   position: fixed;
   top: 0;
@@ -264,6 +266,7 @@ pastebin source: https://pastebin.com/gEfdRwgc
   width: 1px;
   height: 1px;
   background: transparent;
+  z-index: -100;
   /* box-shadow copied from pastebin */
   /* visually "multiplies" the 1x1 px^2 element */
   box-shadow: 779px 1331px #fff, 324px 42px #fff, 303px 586px #fff,
