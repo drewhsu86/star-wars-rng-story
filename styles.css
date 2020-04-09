@@ -224,8 +224,6 @@ button:hover {
 
 .sImg {
   width: 100%;
-  min-height: 300px;
-  
 }
 
 .sCircle {
@@ -234,6 +232,10 @@ button:hover {
   width: 300px;
   height: 300px;
   
+}
+
+.sCircle .sImg {
+  min-height: 100%;
 }
 
 @keyframes blurring {
