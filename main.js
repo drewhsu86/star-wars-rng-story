@@ -51,8 +51,7 @@ window.onload = () => {
       <div class="crawl">
         <div class="title">
          <h2> STAR WARS </h2>
-
-        
+  
          <h3> Episode 0:  </h3>
          <h3> HTML, CSS & Javascript </h3>
         </div>
@@ -363,16 +362,12 @@ window.onload = () => {
   } // end of function generateQuestionDiv
 
   // ================ FUNCTION ================== //
-  // function generateQuestionDiv()
-  // note: this function does many dom actions 
-  //    redundant with generateQuestionDiv, but
-  //    because each API call is done separately
-  //    (for example for 3 starships, we make 3 separate calls)
-  //    the dom elements are created in the .then() after each
-  // Refactoring under consideration:
-  //    Create dom element using generateQuestionDivs (empty data)
-  //     Identify the N .answerDiv dom elements (held by .answers)
-  //     Make N API calls and alter the .answerDiv for each
+  // function generateQDivByCat()
+  // calls generateQuestionDiv to make the divs as before
+  // but makes api calls based on the categories available on SWAPI
+  // then makes api calls to google cse to grab an image
+  // and inserts those values and images into the answer buttons
+  // from answerDivs made in generateQuestionDiv()
   function generateQDivByCat(nums, qType, qStr, qRecord, qDefaults) {
     // this function calls swapi and accesses a category
     // because many categories are issing individual id's
@@ -728,8 +723,6 @@ window.onload = () => {
       "You think it is so easy to defeat the dark side? We shall see, my friend. Huehuehue..." 
 
     `)
-
-
 
 
     return result
