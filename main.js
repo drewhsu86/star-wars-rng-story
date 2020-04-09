@@ -35,9 +35,6 @@
 // url + category + id
 // `https://swapi.co/api/starships/3`
 
-// GIPHY
-// `https://api.giphy.com/v1/gifs/search?api_key=un0aXOmo2kxpmU3ZwQeEpjFtPbxvr1DO&q=anakin&limit=25&offset=0&rating=G&lang=en`
-
 // GOOGLE CSE STARWARS FANDOM
 // `https://www.googleapis.com/customsearch/v1?key=AIzaSyBX078uQwSqNAc0bdQZVK5v0qVJCFYace8&cx=015933299778943018564:7q15mjcneyd&q=anakin&searchType=image`
 
@@ -47,7 +44,9 @@
 // start of window onload
 window.onload = () => {
 
-  // for scroll
+  // ================ VARIABLE DECLARATIONS ================== //
+
+  // for the css star wars scroll window
   const starWarsScrollText = `
       <div class="crawl">
         <div class="title">
@@ -88,6 +87,7 @@ window.onload = () => {
   const main = document.querySelector('main')
   const header = document.querySelector('header')
 
+  // variables for setting up api loading and form submit
   let submitButton
   let apiLoadInfo = {
     qReady: 0,
@@ -118,14 +118,6 @@ window.onload = () => {
   // Since we don't expect swapi to start deleting characters
   // I will hardcode the max number of each category
 
-  // note: swapi not all starship indices work
-  // 2, 3, 5, 9, 11, 15
-  // const maxPeople = 87
-  // const maxVehicles = 39
-  // const maxStarships = 37
-  // const maxPlanets = 61
-  // const maxSpecies = 37
-
   const swapiMax = {
     people: 87,
     vehicles: 39,
@@ -134,27 +126,32 @@ window.onload = () => {
     species: 37
   }
 
+  // note: swapi not all starship indices work
+  // 2, 3, 5, 9, 11, 15
+  // const maxPeople = 87
+  // const maxVehicles = 39
+  // const maxStarships = 37
+  // const maxPlanets = 61
+  // const maxSpecies = 37
+
+
+  // swapi does not have a weapon data base so I will make questions
+  // based on 3 popular star wars weapons
   const weapons = [
     { text: 'Lightsaber', img: './images/img-lightsaber.png' },
     { text: 'Blaster', img: './images/img-blaster.jpg' },
     { text: 'Bowcaster', img: './images/img-bowcaster.png' }
   ]
 
+  // Base URL List
   // swapi base url
   const urlSWAPI = `https://swapi.co/api/`
-
-  // giphy base url 
-  // const urlGIPHY = null // not used so I removed
 
   // google cse starwars fandom url
   const urlGcseSW = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBX078uQwSqNAc0bdQZVK5v0qVJCFYace8&cx=015933299778943018564:7q15mjcneyd&searchType=image`
 
-  // google cse giphy url 
-  // const urlGcseGIPHY = null // not used so I removed 
 
-
-
-  // variables for storing selected choices
+  // variable for storing selected choices
   let quizSelections = {
     name: '',
     weapon: '',
@@ -164,31 +161,21 @@ window.onload = () => {
     nemesis: ''
   }
 
-  // going to let storySelections be post MVP due to SWAPI problems
-  // let storySelections = {
-
-  // }
 
 
-  // onload, run async function initializeQuiz
-  initializeQuiz()
-
-
-
-
-
-
+  // ================ FUNCTION ================== //
   // function initializeQuiz
   function initializeQuiz() {
 
     // run helper functions to add divs to array called questions
 
+    // create name input form 
     generateNameDiv()
+
+    // create weapon quiz question
     generateQuestionDiv(
       'In the Star Wars universe, which weapon would you use?',
       weapons, 'weapon')
-
-
 
     // perform api call for:
     // 4 species
@@ -230,6 +217,9 @@ window.onload = () => {
 
   } // end of function initializeQuiz
 
+
+  // ================ FUNCTION ================== //
+  // function for generating a div for receiving name input 
   function generateNameDiv() {
 
     // create structure as detailed in comments on top 
@@ -294,6 +284,7 @@ window.onload = () => {
   } // end of function generateNameDiv
 
 
+  // ================ FUNCTION ================== //
   // function generateQuestionDiv()
   function generateQuestionDiv(qStr, aArr, qType, myFunc) {
     // the parameters are question as a string
@@ -345,7 +336,7 @@ window.onload = () => {
         // add functionality to the image so that
         // it acts as a button 
         if (myFunc) {
-          // if you supply a function it will perform it 
+          // if you supply a function as argument it will perform it 
           myFunc()
         } else {
           // else it will add the quiz answer to the object
@@ -371,35 +362,54 @@ window.onload = () => {
     return qContainer
   } // end of function generateQuestionDiv
 
-
+  // ================ FUNCTION ================== //
   // function generateQuestionDiv()
+  // note: this function does many dom actions 
+  //    redundant with generateQuestionDiv, but
+  //    because each API call is done separately
+  //    (for example for 3 starships, we make 3 separate calls)
+  //    the dom elements are created in the .then() after each
+  // Refactoring under consideration:
+  //    Create dom element using generateQuestionDivs (empty data)
+  //     Identify the N .answerDiv dom elements (held by .answers)
+  //     Make N API calls and alter the .answerDiv for each
   function generateQDivByCat(nums, qType, qStr, qRecord, qDefaults) {
     // this function calls swapi and accesses a category
     // because many categories are issing individual id's
     // this looks at what's available
 
-    // create structure as detailed in comments on top 
-    const qContainer = document.createElement('div')
-    qContainer.className = 'qContainer'
-    qContainer.style.display = 'none'
-    main.append(qContainer)
 
-    const question = document.createElement('h2')
-    question.className = 'question'
-    question.innerText = qStr
-    qContainer.append(question)
-
-    const answers = document.createElement('div')
-    answers.className = 'answers'
-    qContainer.append(answers)
-
-    let colorInd = 0 // for colorwheel iteration
+    // for finding the next free answerDiv via iterating indices
+    let ansInd = 0
 
 
     // then we call that page using this url structure:
     // https://swapi.co/api/starships/?page=1
     const randNums = nums
 
+    // we create an array of empty objects (but with the right keys)
+    // because we need to fill them in after the api call 
+    const emptyObjArr = nums.map(() => {
+      return {
+        text: '', img: ''
+      }
+    })
+
+    // create the divs we want to use 
+    const qContainer = generateQuestionDiv(qStr, emptyObjArr, qType, () => {
+      // do nothing
+    })
+
+    // follow the dom tree down the following structure 
+    // qContainer > answers > (multiple answerDiv-s)
+    // if answerDiv > answerText has empty string innerText
+    // then we need to add text and an image 
+
+    const answers = childrenWithClass(qContainer, 'answers')[0]
+    const answerDivs = childrenWithClass(answers, 'answerDiv')
+
+    // for each random index number from randNums
+    // make an api call
     for (let i = 0; i < randNums.length; i++) {
       // first, each page holds ten things so we pick a page
       const page = Math.floor(randNums[i] / 10) + 1
@@ -435,6 +445,9 @@ window.onload = () => {
                 return queryObj
               }).catch((er) => {
 
+                // if google search doesnt work
+                // use no image (the image is replaced by text)
+
                 console.log(er)
 
                 queryObj.img = ''
@@ -442,25 +455,26 @@ window.onload = () => {
                 return queryObj
 
               }).then((ans) => {
-                // for each answer choice make a new answer button
-                // aArr should be an array holding objects of the form:
-                // {text: textStr, img: srcStr}
+                // for each answer choice (using ansInd)
+                // go to the next available answerDiv
 
                 // console.log(ans)
                 // console.log(ans.img)
 
-                const answerDiv = document.createElement('div')
-                answerDiv.className = 'answerDiv'
+                const answerDiv = answerDivs[ansInd]
+                ansInd++
 
-                const answerText = document.createElement('h3')
-                answerText.className = 'answerText'
+                const answerText = childrenWithClass(answerDiv, 'answerText')[0]
                 answerText.innerText = ans.text
 
-                const imgHolder = document.createElement('div')
-                imgHolder.className = 'imgHolder'
-                imgHolder.style.borderColor = colorWheel[colorInd]
-                colorInd++
+                const imgHolder = childrenWithClass(answerDiv, 'imgHolder')[0]
 
+
+                // remove the existing answerImg which is empty 
+                childrenWithClass(imgHolder, 'answerImg')[0].remove()
+
+                // if there is an image then add it to imageHolder
+                // or else a text div is added
                 if (ans.img) {
                   const answerImg = document.createElement('img')
                   answerImg.className = 'answerImg'
@@ -487,10 +501,6 @@ window.onload = () => {
                   console.log(quizSelections)
                 })
 
-                answerDiv.append(answerText)
-                answerDiv.append(imgHolder)
-                answers.append(answerDiv)
-
                 // at the end of 4+3+3+2 calls 
                 // the submit button should be enabled
                 apiLoadInfo.qAddReady()
@@ -504,18 +514,16 @@ window.onload = () => {
 
 
       }
-      catch (er) {
+      catch (er) { // catch for the first try for SWAPI axios call 
         console.log(er)
       }
     } // end of for loop over num 
-
-
-
 
     return qContainer
   } // end of function generateQDivByCat
 
 
+  // ================ FUNCTION ================== //
   // function nextSibClass - hide this element's question div and activate next sibling question div
   // we float up the tree of the dom until we run into qContainer 
 
@@ -548,8 +556,10 @@ window.onload = () => {
   } // end of function nextSibClass
 
 
-  // function to make an array of 4 different choices
+  // ================ FUNCTION ================== //
+  // function to make an array of N different choices
   // out of a max number (from 1 to the max number)
+  // while not having re-picks of the same number
   function randToArr(numPicks, maxVal) {
 
     let prevChoices = []
@@ -562,11 +572,14 @@ window.onload = () => {
       prevChoices.push(newPick)
     }
 
-
     return prevChoices
 
   } // end randToArr function 
 
+
+  // ================ FUNCTION ================== //
+  // function quickly creates an element with given class and type
+  // and appends it to specified parent element 
   function createElemWParent(attachParent, sClass, elemType) {
     // attachDiv is the div the story div attaches to 
     const elem = document.createElement(elemType)
@@ -577,22 +590,38 @@ window.onload = () => {
   } // end createElemWParent
 
 
+  // ================ FUNCTION ================== //
+  // function to return array of children elements but only 
+  // if they have a certain class 
+  function childrenWithClass(parentElem, sClass) {
+    // quickly use children to get all child elements
+    // then use .contains to check their classList
+    let result = []
 
-  // object with method to make story divs 
+    let childrenList = parentElem.children
+    // console.log(childrenList)
+
+    for (let i = 0; i < childrenList.length; i++) {
+      // console.log(childrenList[i])
+      if (childrenList[i].classList.contains(sClass)) {
+        result.push(childrenList[i])
+      }
+    }
+
+    return result
+
+  }
+
+  // ================ FUNCTION ================== //
+  // function to make story divs (calls helper functions)
   function storyCreator() {
     console.log('starting storyCreator')
 
+    // we take the answers from the quiz and use them to make our story
     const s = quizSelections
 
     // create an array of strings that define what we want to show
-    const storyStrs = createStrs(s)
-
-    // const endBtn = {
-    //   text: 'Start Over!',
-    //   eventFunc() {
-    //     location.reload()
-    //   }
-    // }
+    const storyStrs = createStrs()
 
     createStoryPage(storyStrs[0], [s.starship.img], '')
     createStoryPage(storyStrs[1], [s.sidekick.img, s.species.img], 'sCircle')
@@ -607,13 +636,22 @@ window.onload = () => {
     `, [{ text: '', img: './images/restart.png' }], 'div', restart)
   } // end of storyCreator (aggregates helper functions)
 
+  // ================ FUNCTION ================== //
+  // function that refreshes page
+  // current functionality of the restart button in the app 
   function restart() {
     location.reload()
   }
 
-  function createStrs(s) {
+  // ================ FUNCTION ================== //
+  // function that creates an array of strings using quizSelections
+  // in post MVP there would either be multiple versions of this function
+  // or conditionals within this function to have multiple story outcomes
+  function createStrs() {
 
     let result = []
+
+    const s = quizSelections
 
     // page 1
     result.push(`
@@ -697,6 +735,9 @@ window.onload = () => {
     return result
   } // end of createStrs
 
+  // ================ FUNCTION ================== //
+  // function that takes story info and turns it into a div 
+  // similar to generateQuestionDiv(...)
   function createStoryPage(storyStr, sImgPaths, sImgClass, btn) {
     // default sImgClass is empty, and appears with slight border-radius
     // current option is sCircle adder class which has border-radius 50%
@@ -740,7 +781,7 @@ window.onload = () => {
 
   } // end of createStory 
 
-
+  // ================ FUNCTION ================== //
   // loading box that shows the number of qReady in apiLoadInfo
   function createLoadBox(numLoads) {
     const loadBox = document.createElement('div')
@@ -758,7 +799,12 @@ window.onload = () => {
     return loadBox
   } // end of createLoadBox
 
+  // ================ FUNCTION ================== //
   // loading box updating function that shows qReady in apiLoadInfo 
+  // when the "loading bar" is full then all api calls were made
+  // whether they failed or not, the app will run with dummy data if necessary
+  // each loadBullet has a different character depending on if that
+  // api call is finished or not (so partial loading looks like  |||||....... )
   function updateLoadBox() {
     // reads qReady from apiLoadInfo and changes the loadBullets
     // in loadBox 
@@ -787,5 +833,7 @@ window.onload = () => {
   } // end of updateLoadBox
 
 
+  // onload, run async function initializeQuiz
+  initializeQuiz()
 
 } // end of window onload
