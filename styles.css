@@ -12,6 +12,7 @@ body {
   font-family: Tahoma, Geneva, Verdana, sans-serif;
   background-color: black;
   color: yellow;
+  margin: 0 auto;
 }
 
 header {
@@ -542,11 +543,21 @@ start of media query for larger screen width
 /* outside of media query above width 800px */
 
 /* hide scroll if screen too thin */
-@media (max-width: 600px) {
+@media (max-width: 500px) {
+  input {
+    font-size: 14px;
+    max-width: 300px;
+  }
+
+  header h1 {
+    font-size: 24px;
+  }
+
   .starwars {
     display: none;
   }
 }
+
 
 
 
