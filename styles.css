@@ -13,6 +13,7 @@ body {
   background-color: black;
   color: yellow;
   margin: 0 auto;
+  width: 100%;
 }
 
 header {
@@ -87,6 +88,8 @@ button:hover {
 
 .question {
   font-family: sans-serif;
+  align-self: center;
+  margin: 5px auto;
 }
 
 .answers {
@@ -123,6 +126,7 @@ button:hover {
 
 .answerText {
   font-family: sans-serif;
+  align-self: center;
 }
 
 .imgHolder {
@@ -509,6 +513,10 @@ start of media query for larger screen width
     line-height: 70px;
   }
 
+  footer {
+    width: 80vw;
+  }
+
   .sImgCont {
 
     flex-direction: row;
@@ -524,12 +532,17 @@ start of media query for larger screen width
     
   }
 
-  img {
+  .imgHolder {
     max-width: 60vw;
   }
 
   .sImgDiv {
     width: 60vw;
+  }
+
+  .sImg {
+    min-height: none;
+    
   }
 
   .sCircle {
@@ -549,6 +562,26 @@ start of media query for larger screen width
   input {
     font-size: 14px;
     max-width: 300px;
+  }
+
+  .question {
+    font-size: 16px;
+    width: 80vw;
+  }
+
+  .imgHolder {
+    border-width: 20px;
+    width: 150px;
+    height: 150px;
+  }
+
+  .sParagraph {
+    font-size: 16px;
+  }
+
+  .sImgDiv {
+    min-width: 150px;
+    max-width: 200px;
   }
 
   header h1 {
