@@ -119,6 +119,7 @@ The basic idea is to make a click event listener and hover effect to make this d
 | April 8 - Wednesday | css pass over all relevant elements | 4 |
 | April 9 - Thursday | css and bugs day | 8 |
 
+* (Note: April 9th - css and bugs day included post-mvp features and refactoring code)
 ---
 
 ### Priority Matrix:
@@ -145,10 +146,11 @@ Expected vs actual hours spent per task
 | - JS - generated story appends proper divs | 4 | 6 |  Y |
 | __Wednesday__ | | | |
 | - all basic MVP functionality runs beginning to end | 4 | 1 |  Y |
-| - css pass over all relevant elements | 4 | 8 | Y | 
+| - CSS pass over all relevant elements | 4 | 8 | Y | 
 | __Thursday__ | | | |
-| - css and bugs | 8 | ? | N |
-| __Total Hours__ | 41  | ?  | N |
+| - post-MVP CSS | 4 | 2 | Y |
+| - refactor some JS | 4 | 5 | Y |
+| __Total Hours__ | 41  | 42  | N |
 
 ### Comments and Notes:
 1. Working with a simpler layout, without nav or aside bars, helps lower the design time a lot (CSS takes a lot of time and iteration to get perfect).
