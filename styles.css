@@ -485,7 +485,7 @@ pastebin source: https://pastebin.com/gEfdRwgc
   position: relative;
   top: -100px;
   transform-origin: 50% 100%;
-  animation: crawl 75s linear;
+  animation: crawl 80s linear;
   animation-iteration-count: infinite;
   width: 100%;
   

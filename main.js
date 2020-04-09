@@ -792,6 +792,7 @@ window.onload = () => {
     return loadBox
   } // end of createLoadBox
 
+
   // ================ FUNCTION ================== //
   // loading box updating function that shows qReady in apiLoadInfo 
   // when the "loading bar" is full then all api calls were made
