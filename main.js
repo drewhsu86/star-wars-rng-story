@@ -212,8 +212,6 @@ window.onload = () => {
     Press "Start" to start!`, [{ text: '', img: './images/start.png' }], 'div', storyCreator)
 
 
-
-
   } // end of function initializeQuiz
 
 
@@ -360,6 +358,7 @@ window.onload = () => {
     main.append(qContainer)
     return qContainer
   } // end of function generateQuestionDiv
+
 
   // ================ FUNCTION ================== //
   // function generateQDivByCat()
