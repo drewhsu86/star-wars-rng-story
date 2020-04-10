@@ -150,7 +150,7 @@ Expected vs actual hours spent per task
 | __Thursday__ | | | |
 | - post-MVP CSS | 4 | 2 | Y |
 | - refactor some JS | 4 | 3 | Y |
-| __Total Hours__ | 41  | 40  | N |
+| __Total Hours__ | 41  | 40  | Y |
 
 ### Comments and Notes:
 1. Working with a simpler layout, without nav or aside bars, helps lower the design time a lot (CSS takes a lot of time and iteration to get perfect).
