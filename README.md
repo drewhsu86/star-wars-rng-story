@@ -12,7 +12,7 @@ Just answer some easy multiple choice questions and our custom AI will write a t
 After your choices are entered, just hit finish and voila! Your new Star Wars story is ready to be viewed on your browser or mobile device.
 
 Project link here:  
-[Star Wars RNG Story](http://starwars-rng-story.surge.sh/)
+[Star Wars RNG Story](https://pages.git.generalassemb.ly/drewhsu86/Star-Wars-RNG-Story)
 
 ---
 
