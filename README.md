@@ -5,6 +5,9 @@
 Star Wars - RNG Story!
 
 ### App Description:
+
+DEPLOYED: April 10, 2020
+
 Tired of latest Star Wars canon? We've got the app for you! 
 
 Just answer some easy multiple choice questions and our custom AI will write a thrilling and heartfelt story based on your choices!
@@ -13,6 +16,10 @@ After your choices are entered, just hit finish and voila! Your new Star Wars st
 
 Project link here:  
 [Star Wars RNG Story](https://pages.git.generalassemb.ly/drewhsu86/Star-Wars-RNG-Story)
+
+UPDATE: May 6, 2020
+
+I made a branch that uses an Express app that serves some of the data from the SWAPI API since it had stopped being maintained. But I also found out that there is now a [SWAPI.dev](https://swapi.dev/).
 
 ---
 
