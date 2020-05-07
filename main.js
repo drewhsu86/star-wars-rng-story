@@ -144,7 +144,7 @@ window.onload = () => {
 
   // Base URL List
   // swapi base url
-  const urlSWAPI = `https://swapi.co/api/`
+  const urlSWAPI = `https://swapi.dev/api/`
 
   // google cse starwars fandom url
   const urlGcseSW = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBX078uQwSqNAc0bdQZVK5v0qVJCFYace8&cx=015933299778943018564:7q15mjcneyd&searchType=image`
