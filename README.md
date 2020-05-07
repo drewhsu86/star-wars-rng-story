@@ -19,8 +19,8 @@ Project link here:
 
 UPDATE: May 6, 2020
 
-I made a branch that uses an Express app that serves some of the data from the SWAPI API since it had stopped being maintained. But I also found out that there is now a [SWAPI.dev](https://swapi.dev/).
-=======
+I made a branch that s an Express app that serves some of the data from the SWAPI API since it had stopped being maintained. But I also found out that there is now a [SWAPI.dev](https://swapi.dev/).
+
 UPDATED: May 6, 2020
 
 I wrote an [Express API](https://github.com/drewhsu86/star-wars-api-express/tree/master) that serves mostly just the data I was calling in this project using the JSON files from [SWAPI's Github page](https://github.com/phalt/swapi).
