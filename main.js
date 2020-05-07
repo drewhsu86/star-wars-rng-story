@@ -144,7 +144,7 @@ window.onload = () => {
 
   // Base URL List
   // swapi base url
-  const urlSWAPI = `https://swapi.co/api/`
+  const urlSWAPI = `https://star-wars-api-copy-express.herokuapp.com/`
 
   // google cse starwars fandom url
   const urlGcseSW = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBX078uQwSqNAc0bdQZVK5v0qVJCFYace8&cx=015933299778943018564:7q15mjcneyd&searchType=image`
@@ -404,21 +404,30 @@ window.onload = () => {
 
     // for each random index number from randNums
     // make an api call
+
+    // still use iterator i 
+    // i < randNums.length 
     for (let i = 0; i < randNums.length; i++) {
+
       // first, each page holds ten things so we pick a page
       const page = Math.floor(randNums[i] / 10) + 1
       const ind = randNums[i] % 10
+
       try {
 
-        axios.get(urlSWAPI + qType + '/?page=' + page)
+        axios.get(urlSWAPI + qType + '/page/' + page)
           .then((res) => {
-            // console.log(res)
-            return res.data.results
+            console.log(urlSWAPI + qType + '/page/' + page)
+            console.log(res.data)
+            return res.data
           }).then((results) => {
+
+            // json file doesn't have names for starships, vehicles
+            if (qType === 'starships') throw "using default starships"
 
             // ind is the index once you are on the right page of 10
             console.log('Accessed SWAPI')
-            return { text: results[ind].name }
+            return { text: qType !== 'starships' ? results[ind].name : results[ind]['starship_class'] }
 
           })
           .catch((er) => {
@@ -454,6 +463,7 @@ window.onload = () => {
 
                 // console.log(ans)
                 // console.log(ans.img)
+                console.log('ans', ans)
 
                 const answerDiv = answerDivs[ansInd]
                 ansInd++
@@ -478,7 +488,7 @@ window.onload = () => {
                 } else {
                   const answerImgSub = document.createElement('div')
                   answerImgSub.className = 'answerImgSub'
-                  answerImgSub.innerText = ans.text.toUpperCase()
+                  answerImgSub.innerText = ans.text ? ans.text.toUpperCase() : "UNDEFINED"
                   imgHolder.append(answerImgSub)
                 }
 
@@ -487,7 +497,7 @@ window.onload = () => {
                   // add functionality to the image so that
                   // it acts as a button 
                   quizSelections[qRecord] = {
-                    text: ans.text.toUpperCase(),
+                    text: ans.text ? ans.text.toUpperCase() : "UNDEFINED",
                     img: ans.img
                   }
                   header.scrollIntoView()
@@ -504,14 +514,18 @@ window.onload = () => {
                 }
               }) // end of then
 
-          })
+          }) // end of outer then 
 
 
-      }
+      } // end of try
       catch (er) { // catch for the first try for SWAPI axios call 
         console.log(er)
-      }
-    } // end of for loop over num 
+
+      } // end of catch 
+
+    }
+    // end of for loop over num
+
 
     return qContainer
   } // end of function generateQDivByCat
