@@ -17,7 +17,6 @@ After your choices are entered, just hit finish and voila! Your new Star Wars st
 Project link here:  
 [Star Wars RNG Story](http://starwars-rng-story.surge.sh/)
 
-<<<<<<< HEAD
 UPDATE: May 6, 2020
 
 I made a branch that uses an Express app that serves some of the data from the SWAPI API since it had stopped being maintained. But I also found out that there is now a [SWAPI.dev](https://swapi.dev/).
@@ -25,7 +24,7 @@ I made a branch that uses an Express app that serves some of the data from the S
 UPDATED: May 6, 2020
 
 I wrote an [Express API](https://github.com/drewhsu86/star-wars-api-express/tree/master) that serves mostly just the data I was calling in this project using the JSON files from [SWAPI's Github page](https://github.com/phalt/swapi).
->>>>>>> 3c0628ee5a9181d0dc8e1fce9e8aab9201f3232b
+
 
 ---
 
